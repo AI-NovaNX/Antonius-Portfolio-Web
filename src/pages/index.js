@@ -182,7 +182,7 @@ const projects = [
   {
     title: 'Nexread- Every visit brings your next great read',
     href: 'https://nexread.ai-novanx.online/',
-    image: '/images/official/nexread.png',
+    image: '/images/official/Nexread.png',
     description:
       'NexRead is a full stack library management application built with Next.js, TypeScript, NestJS, and PostgreSQL. It offers book search, borrowing and return tracking, and administrative tools through a responsive, user-friendly interface.',
     skills: [
@@ -214,7 +214,7 @@ const projects = [
   {
     title: 'RevoFun - Browser-Based Gaming Website',
     href: 'https://ai-novanx.online/src/indeks.html',
-    image: '/images/official/revofun.png',
+    image: '/images/official/RevoFun.png',
     description:
       'Live demo of RevoFun, a browser-based gaming website built with HTML5, CSS3, Tailwind CSS, and Vanilla JavaScript. Includes a responsive landing page, mobile navigation, and three mini games: Battleship War, Avoid the Falling Objects, and Memory Card Game with score tracking and local leaderboard storage.',
     skills: ['HTML5', 'CSS3', 'Tailwind CSS', 'JavaScript'],
