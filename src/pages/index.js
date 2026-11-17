@@ -1,22 +1,181 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import { Card, CardContent, CardDescription, CardTitle } from '../components/ui/card';
+import {
+  siCss,
+  siDocker,
+  siHtml5,
+  siJavascript,
+  siNestjs,
+  siNextdotjs,
+  siPostgresql,
+  siPostman,
+  siPrisma,
+  siReact,
+  siTypescript,
+} from 'simple-icons';
+import './tailwind.generated.css';
 import './portfolio.css';
+
+const skillCarousels = [
+  {
+    title: 'Frontend Skill set :',
+    direction: 'left',
+    items: [
+      { name: 'HTML5', icon: siHtml5 },
+      { name: 'CSS', icon: siCss },
+      { name: 'JS', icon: siJavascript },
+      { name: 'TypeScript', icon: siTypescript },
+      { name: 'React', icon: siReact },
+      { name: 'Next.js', icon: siNextdotjs },
+    ],
+  },
+  {
+    title: 'Backend Skill set :',
+    direction: 'right',
+    items: [
+      { name: 'NestJS', icon: siNestjs },
+      { name: 'Prisma ORM', icon: siPrisma },
+      { name: 'Docker', icon: siDocker },
+      { name: 'PostgreSQL', icon: siPostgresql },
+      { name: 'Postman', icon: siPostman },
+    ],
+  },
+];
 
 const socialLinks = [
   { name: 'GitHub', href: 'https://github.com/AI-NovaNX', icon: 'github' },
-  { name: 'LinkedIn', href: 'https://www.linkedin.com/in/antonius-eko-indriarto', icon: 'linkedin' },
+  {
+    name: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/antonius-eko-indriarto',
+    icon: 'linkedin',
+  },
+];
+
+const education = [
+  {
+    period: '2026',
+    degree: 'Full Stack Software Engineering Faculty',
+    school: 'RevoU',
+    href: 'https://revou.co/',
+    logo: '/images/official/Logo_revou.png',
+    description:
+      'Completed an intensive software engineering program focused on building practical frontend and backend skills using React, Next.js, TypeScript, Node.js, REST APIs, and database fundamentals.',
+    skills: [
+      'HTML5',
+      'Tailwind CSS',
+      'JavaScript',
+      'React',
+      'Next.js',
+      'TypeScript',
+      'Node.js',
+      'Prisma ORM',
+      'REST APIs',
+      'PostgreSQL',
+      'GitHub Actions',
+      'AI assisted programming',
+      'Responsive Design',
+      'Docker',
+    ],
+  },
+  {
+    period: '2025',
+    degree: 'Frontend Web Programming Hack Bootcamp',
+    school: 'Ahademy',
+    href: 'https://ahademycode.com/',
+    logo: '/images/official/Ahademy1.png',
+    logoClass: 'education-logo-ahademy',
+    desciption:
+      'Completed a 3-month intensive bootcamp focused on frontend web development, covering HTML, CSS, JavaScript, and modern frontend frameworks.',
+    skills: [
+      'HTML5',
+      'Tailwind CSS',
+      'JavaScript',
+      'Responsive Design',
+      'Figma Design slicing',
+      'Next.js',
+      'React',
+      'TypeScript',
+      'Redux',
+      'shadcn-UI',
+      'Framer Motion',
+      'REST APIs',
+      'Swagger API documentation',
+    ],
+  },
+  {
+    period: '2023 - 2025',
+    degree: 'Master of Information System Management',
+    school: 'Universitas Bina Nusantara (BINUS)',
+    href: 'https://binus.ac.id/',
+    logo: '/images/official/logo%20Binus.png',
+    logoClass: 'education-logo-binus',
+    description:
+      'Pursuing a Master of Information System Management degree, focusing on advanced topics in information systems, project management, and technology strategy.',
+    skills: [
+      'Information Systems',
+      'Project Management',
+      'Technology Strategy',
+      'Data Analysis',
+      'Business Intelligence',
+      'Information Security',
+      'IT Governance',
+      'Emerging Technologies',
+      'Research Methods',
+    ],
+  },
+  {
+    period: '1988 - 1995',
+    degree: 'Bachelor of Civil Engineering',
+    school: 'Universitas Atma Jaya Yogyakarta (UAJY)',
+    href: 'https://https://www.uajy.ac.id/id-id/',
+    logo: '/images/official/logo%20UAJY.png',
+    logoClass: 'education-logo-uajy',
+    description:
+      'Earned a Bachelor of Civil Engineering degree, gaining foundational knowledge in structural engineering, construction management, and quality control.',
+    skills: [
+      'Structural Engineering',
+      'Construction Management',
+      'Structural Analysis',
+      'Project Management',
+      'Project Planning',
+      'Materials Science',
+      'Surveying',
+      'Geotechnical Engineering',
+      'Environmental Engineering',
+      'Building Construction',
+      'Civil Engineering Design',
+      'Transportation Engineering',
+      'Water Resources Engineering',
+      'Construction Safety',
+      'Construction Law and Contracts',
+    ],
+  },
 ];
 
 const experience = [
   {
-    period: '1995 - 2004',
+    period: '1995 - 2024',
     role: 'QA/QC Manager',
     company: 'PT WIKA Gedung',
     href: 'https://www.wikagedung.co.id/',
     description:
-      'Directly responsible for ensuring that projects met company quality standards and satisfied all quality requirements at handover. This experience strengthened my skills in quality assurance and project management.',
-    skills: ['Quality Assurance', 'Quality Control', 'Project Management', 'ISO 9001:2015 QMS', 'Total Quality Management', 'Problem Solving'],
+      'Directly responsible for ensuring that building constructionprojects met company quality standards and satisfied all quality requirements at handover. This experience strengthened my skills in quality assurance and project management.',
+    skills: [
+      'Quality Assurance',
+      'Quality Control',
+      'Project Management',
+      'ISO 9001:2015 QMS',
+      'Total Quality Management',
+      'Problem Solving and debugging',
+      'Root Cause Analysis',
+      'Cross-functional Collaboration',
+      'Construction Standards and Codes',
+      'Inspection and Testing',
+      'Documentation and Reporting',
+      'Continuous Improvement',
+    ],
   },
-
 ];
 
 const projects = [
@@ -60,46 +219,7 @@ const projects = [
       'Live demo of RevoFun, a browser-based gaming website built with HTML5, CSS3, Tailwind CSS, and Vanilla JavaScript. Includes a responsive landing page, mobile navigation, and three mini games: Battleship War, Avoid the Falling Objects, and Memory Card Game with score tracking and local leaderboard storage.',
     skills: ['HTML5', 'CSS3', 'Tailwind CSS', 'JavaScript'],
   },
-  {
-    title: 'Personal Portfolio Website - Live Demo',
-    href: 'https://ai-novanx.github.io/milestone-1-AI-NovaNX/',
-    image: '/images/official/portfolio-web.png',
-    description:
-      'Personal portfolio website built with HTML5, CSS3, Tailwind CSS, and Vanilla JavaScript. It features a responsive layout, project showcase, and a clean, user-friendly interface for presenting personal work and achievements.',
-    skills: ['HTML5', 'CSS3', 'Tailwind CSS', 'JavaScript'],
-  },
 ];
-
-/* const writing = [
-  {
-    year: '2026',
-    title: 'Welcome to the AI Parade',
-    href: 'https://medium.com/@bchiang7/welcome-to-the-ai-parade-765f79b00c30',
-    image: '/images/official/ai-parade.png',
-    alt: 'Welcome to Black Parade by My Chemical Romance with “Black” changed to “AI”',
-  },
-  {
-    year: '2024',
-    title: '5 Common Accessibility Pitfalls and How to Avoid Them',
-    href: 'https://klaviyo.tech/5-common-accessibility-pitfalls-and-how-to-avoid-them-e316dfc55ff0',
-    image: '/images/official/a11y.png',
-    alt: 'Accessibility icon',
-  },
-  {
-    year: '2020',
-    title: 'Integrating Algolia Search with WordPress Multisite',
-    href: 'https://medium.com/stories-from-upstatement/integrating-algolia-search-with-wordpress-multisite-e2dea3ed449c',
-    image: '/images/official/algolia-search.jpeg',
-    alt: 'Telescope',
-  },
-  {
-    year: '2019',
-    title: 'Building a Headless Mobile App CMS From Scratch',
-    href: 'https://medium.com/stories-from-upstatement/building-a-headless-mobile-app-cms-from-scratch-bab2d17744d9',
-    image: '/images/official/headless.jpeg',
-    alt: 'Headless horseman',
-  },
-]; */
 
 const writing = [];
 
@@ -116,13 +236,84 @@ const ExternalArrow = () => (
 
 const SocialIcon = ({ type }) => {
   const paths = {
-    github: <><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" /></>,
-    linkedin: <><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6ZM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></>,
+    github: (
+      <>
+        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+      </>
+    ),
+    linkedin: (
+      <>
+        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6ZM2 9h4v12H2z" />
+        <circle cx="4" cy="4" r="2" />
+      </>
+    ),
   };
-  return <svg aria-hidden="true" viewBox="0 0 24 24" className="social-icon" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">{paths[type]}</svg>;
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      className="social-icon"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round">
+      {paths[type]}
+    </svg>
+  );
+};
+SocialIcon.propTypes = {
+  type: PropTypes.oneOf(['github', 'linkedin']).isRequired,
 };
 
 const SectionHeading = ({ children }) => <h2 className="section-heading">{children}</h2>;
+SectionHeading.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
+const SkillCarousel = ({ title, items, direction }) => {
+  const renderItems = () =>
+    items.map(({ name, icon }) => (
+      <div className="skill-carousel-item" key={name}>
+        <svg
+          className="skill-carousel-icon"
+          viewBox="0 0 24 24"
+          role="img"
+          aria-label={`${name} logo`}
+          style={{ color: `#${icon.hex}` }}>
+          <path fill="currentColor" d={icon.path} />
+        </svg>
+        <span>{name}</span>
+      </div>
+    ));
+
+  return (
+    <section className={`skill-carousel skill-carousel-${direction}`} aria-label={title}>
+      <h2>{title}</h2>
+      <div className="skill-carousel-window">
+        <div className="skill-carousel-track">
+          <div className="skill-carousel-group">{renderItems()}</div>
+          <div className="skill-carousel-group" aria-hidden="true">
+            {renderItems()}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+SkillCarousel.propTypes = {
+  title: PropTypes.string.isRequired,
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      icon: PropTypes.shape({
+        hex: PropTypes.string.isRequired,
+        path: PropTypes.string.isRequired,
+      }).isRequired,
+    }),
+  ).isRequired,
+  direction: PropTypes.oneOf(['left', 'right']).isRequired,
+};
 
 const ThemeToggle = () => {
   const [isDark, setIsDark] = useState(true);
@@ -131,7 +322,7 @@ const ThemeToggle = () => {
     const savedTheme = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     const darkMode = savedTheme ? savedTheme === 'dark' : prefersDark;
-    
+
     setIsDark(darkMode);
     document.documentElement.setAttribute('data-theme', darkMode ? 'dark' : 'light');
   }, []);
@@ -145,27 +336,38 @@ const ThemeToggle = () => {
   };
 
   return (
-    <button 
-      className="theme-toggle" 
+    <button
+      className="theme-toggle"
       onClick={toggleTheme}
       aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-      title={isDark ? 'Light Mode' : 'Dark Mode'}
-    >
+      title={isDark ? 'Light Mode' : 'Dark Mode'}>
       {isDark ? (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <circle cx="12" cy="12" r="5"/>
-          <line x1="12" y1="1" x2="12" y2="3"/>
-          <line x1="12" y1="21" x2="12" y2="23"/>
-          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-          <line x1="1" y1="12" x2="3" y2="12"/>
-          <line x1="21" y1="12" x2="23" y2="12"/>
-          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round">
+          <circle cx="12" cy="12" r="5" />
+          <line x1="12" y1="1" x2="12" y2="3" />
+          <line x1="12" y1="21" x2="12" y2="23" />
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+          <line x1="1" y1="12" x2="3" y2="12" />
+          <line x1="21" y1="12" x2="23" y2="12" />
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
         </svg>
       ) : (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
         </svg>
       )}
     </button>
@@ -215,6 +417,10 @@ const PortfolioHome = () => {
                   <span />
                   About
                 </a>
+                <a href="#education" className={active === 'education' ? 'is-active' : ''}>
+                  <span />
+                  Education
+                </a>
                 <a href="#experience" className={active === 'experience' ? 'is-active' : ''}>
                   <span />
                   Experience
@@ -225,18 +431,37 @@ const PortfolioHome = () => {
                 </a>
               </nav>
             </div>
-            <ul className="social-list" aria-label="Social media">
-              {socialLinks.map(({ name, href, icon }) => (
-                <li key={name}>
-                  <a href={href} target="_blank" rel="noreferrer" aria-label={name}>
-                    <SocialIcon type={icon} />
-                  </a>
+            <div className="profile-social">
+              <div className="profile-photo-frame">
+                <div className="profile-photo-placeholder" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <circle cx="12" cy="8" r="3.5" />
+                    <path d="M5 20c.7-3.5 3.2-5.5 7-5.5s6.3 2 7 5.5" />
+                  </svg>
+                  <span>Add your photo</span>
+                </div>
+                <img
+                  className="profile-photo"
+                  src="/images/profile.png"
+                  alt="Illustration of Antonius Eko Indriarto's transition from construction quality management to software engineering"
+                  onError={event => {
+                    event.currentTarget.style.display = 'none';
+                  }}
+                />
+              </div>
+              <ul className="social-list" aria-label="Social media">
+                {socialLinks.map(({ name, href, icon }) => (
+                  <li key={name}>
+                    <a href={href} target="_blank" rel="noreferrer" aria-label={name}>
+                      <SocialIcon type={icon} />
+                    </a>
+                  </li>
+                ))}
+                <li>
+                  <ThemeToggle />
                 </li>
-              ))}
-              <li>
-                <ThemeToggle />
-              </li>
-            </ul>
+              </ul>
+            </div>
           </header>
 
           <main id="content" className="main-content">
@@ -271,14 +496,37 @@ const PortfolioHome = () => {
                   ownership, and a commitment to continuous learning to my work as a Frontend
                   Engineer.
                 </p>
-                <p>
-                  I enjoy playing pop music with my band in my free time. I’m also curious about how
-                  software works and regularly explore new apps, especially those related to
-                  automation and my personal interests. This curiosity helps me stay open to new
-                  ideas and enjoy learning through hands-on exploration. I also enjoy traveling with
-                  my family, especially to places with beautiful beaches.
-                </p>
               </div>
+            </section>
+
+            <section id="education" data-section className="content-section" aria-label="Education">
+              <SectionHeading>Education</SectionHeading>
+              <ol className="experience-list">
+                {education.map(item => (
+                  <Card as="li" className="experience-card" key={item.period}>
+                    <div className="period">
+                      {item.period}
+                      {item.logo && (
+                        <img
+                          className={`education-logo ${item.logoClass || ''}`}
+                          src={item.logo}
+                          alt={`${item.school} logo`}
+                        />
+                      )}
+                    </div>
+                    <CardContent className="card-copy">
+                      <CardTitle className="card-heading">
+                        <a href={item.href} target="_blank" rel="noreferrer">
+                          {item.degree} · {item.school}
+                          <ExternalArrow />
+                        </a>
+                      </CardTitle>
+                      <CardDescription>{item.description}</CardDescription>
+                      {item.skills && <SkillList skills={item.skills} />}
+                    </CardContent>
+                  </Card>
+                ))}
+              </ol>
             </section>
 
             <section
@@ -289,19 +537,26 @@ const PortfolioHome = () => {
               <SectionHeading>Experience</SectionHeading>
               <ol className="experience-list">
                 {experience.map(job => (
-                  <li className="experience-card" key={job.period}>
-                    <div className="period">{job.period}</div>
-                    <div className="card-copy">
-                      <h3>
+                  <Card as="li" className="experience-card" key={job.period}>
+                    <div className="period">
+                      {job.period}
+                      <img
+                        className="experience-company-logo"
+                        src="/images/official/logo%20WG.png"
+                        alt="WIKA Gedung"
+                      />
+                    </div>
+                    <CardContent className="card-copy">
+                      <CardTitle className="card-heading">
                         <a href={job.href} target="_blank" rel="noreferrer">
                           {job.role} · {job.company}
                           <ExternalArrow />
                         </a>
-                      </h3>
-                      <p>{job.description}</p>
+                      </CardTitle>
+                      <CardDescription>{job.description}</CardDescription>
                       <SkillList skills={job.skills} />
-                    </div>
-                  </li>
+                    </CardContent>
+                  </Card>
                 ))}
               </ol>
               <a
@@ -321,7 +576,7 @@ const PortfolioHome = () => {
               <SectionHeading>Projects</SectionHeading>
               <ul className="project-list">
                 {projects.map(project => (
-                  <li className="project-card" key={project.title}>
+                  <Card as="li" className="project-card" key={project.title}>
                     <a
                       className="project-image"
                       href={project.href}
@@ -331,14 +586,14 @@ const PortfolioHome = () => {
                       aria-hidden="true">
                       <img src={project.image} alt="" loading="lazy" />
                     </a>
-                    <div className="card-copy">
-                      <h3>
+                    <CardContent className="card-copy">
+                      <CardTitle className="card-heading">
                         <a href={project.href} target="_blank" rel="noreferrer">
                           {project.title}
                           <ExternalArrow />
                         </a>
-                      </h3>
-                      <p>{project.description}</p>
+                      </CardTitle>
+                      <CardDescription>{project.description}</CardDescription>
                       {project.extra && (
                         <a
                           className="project-extra"
@@ -350,8 +605,8 @@ const PortfolioHome = () => {
                         </a>
                       )}
                       {project.skills && <SkillList skills={project.skills} />}
-                    </div>
-                  </li>
+                    </CardContent>
+                  </Card>
                 ))}
               </ul>
             </section>
@@ -363,7 +618,7 @@ const PortfolioHome = () => {
               <SectionHeading>Writing</SectionHeading>
               <ul className="project-list">
                 {writing.map(article => (
-                  <li className="project-card writing-card" key={article.year}>
+                  <Card as="li" className="project-card writing-card" key={article.year}>
                     <a
                       className="project-image"
                       href={article.href}
@@ -373,16 +628,16 @@ const PortfolioHome = () => {
                       aria-hidden="true">
                       <img src={article.image} alt={article.alt} loading="lazy" />
                     </a>
-                    <div className="card-copy">
-                      <p className="writing-year">{article.year}</p>
-                      <h3>
+                    <CardContent className="card-copy">
+                      <CardDescription className="writing-year">{article.year}</CardDescription>
+                      <CardTitle className="card-heading">
                         <a href={article.href} target="_blank" rel="noreferrer">
                           {article.title}
                           <ExternalArrow />
                         </a>
-                      </h3>
-                    </div>
-                  </li>
+                      </CardTitle>
+                    </CardContent>
+                  </Card>
                 ))}
               </ul>
             </section>
@@ -393,30 +648,35 @@ const PortfolioHome = () => {
               aria-label="Contact form">
               <SectionHeading>Get In Touch</SectionHeading>
               <p className="prose">
-                I'm always interested in hearing about new projects and opportunities. Whether you have a question or just want to say hi, feel free to reach out!
+                I'm always interested in hearing about new projects and opportunities. Whether you
+                have a question or just want to say hi, feel free to reach out!
               </p>
               <ContactForm />
             </section>
-
-            <footer className="page-footer">
-              <p>
-                This web coded in{' '}
-                <a href="https://code.visualstudio.com/" target="_blank" rel="noreferrer">
-                  Visual Studio Code.
-                </a>{' '}
-                Built with{' '}
-                <a href="https://www.gatsbyjs.com/" target="_blank" rel="noreferrer">
-                  Gatsby
-                </a>{' '}
-                and styled with{' '}
-                <a href="https://styled-components.com/" target="_blank" rel="noreferrer">
-                  Styled Components
-                </a>
-                . All text is set in Inter.
-              </p>
-            </footer>
           </main>
         </div>
+        <div className="skill-carousels" aria-label="Technology skills">
+          {skillCarousels.map(carousel => (
+            <SkillCarousel key={carousel.title} {...carousel} />
+          ))}
+        </div>
+        <footer className="page-footer">
+          <p>
+            This web coded in{' '}
+            <a href="https://code.visualstudio.com/" target="_blank" rel="noreferrer">
+              Visual Studio Code.
+            </a>{' '}
+            Built with{' '}
+            <a href="https://www.gatsbyjs.com/" target="_blank" rel="noreferrer">
+              Gatsby
+            </a>{' '}
+            and styled with{' '}
+            <a href="https://styled-components.com/" target="_blank" rel="noreferrer">
+              Styled Components
+            </a>
+            . All text is set in Inter.
+          </p>
+        </footer>
       </div>
     </div>
   );
@@ -424,9 +684,14 @@ const PortfolioHome = () => {
 
 const SkillList = ({ skills }) => (
   <ul className="skill-list">
-    {skills.map(skill => <li key={skill}>{skill}</li>)}
+    {skills.map(skill => (
+      <li key={skill}>{skill}</li>
+    ))}
   </ul>
 );
+SkillList.propTypes = {
+  skills: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -437,7 +702,7 @@ const ContactForm = () => {
   const [statusMessage, setStatusMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
@@ -445,9 +710,9 @@ const ContactForm = () => {
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
-    
+
     if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
       setStatusMessage('Please fill in all fields');
       setTimeout(() => setStatusMessage(''), 3000);
@@ -528,14 +793,16 @@ const ContactForm = () => {
           required
         />
       </div>
-      <button
-        type="submit"
-        className="contact-submit"
-        disabled={isLoading}>
+      <button type="submit" className="contact-submit" disabled={isLoading}>
         {isLoading ? 'Sending...' : 'Send Message'}
       </button>
       {statusMessage && (
-        <p className={`form-message ${statusMessage.includes('Thanks') || statusMessage.includes('valid') ? 'success' : 'error'}`}>
+        <p
+          className={`form-message ${
+            statusMessage.includes('Thanks') || statusMessage.includes('valid')
+              ? 'success'
+              : 'error'
+          }`}>
           {statusMessage}
         </p>
       )}
@@ -548,8 +815,11 @@ const IndexPage = () => <PortfolioHome />;
 export const Head = () => (
   <>
     <html lang="en" />
-    <title>Brittany Chiang</title>
-    <meta name="description" content="Brittany Chiang is a software engineer who builds accessible, inclusive products and digital experiences for the web." />
+    <title>Antonius | Portfolio</title>
+    <meta
+      name="description"
+      content="Portfolio of Antonius Eko Indriarto, a frontend engineer building reliable web experiences with React, Next.js, and TypeScript."
+    />
   </>
 );
 

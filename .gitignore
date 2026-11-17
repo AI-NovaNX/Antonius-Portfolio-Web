@@ -6,6 +6,7 @@ package-lock.json
 
 # Build directory
 /public
+/src/pages/tailwind.generated.css
 .DS_Store
 
 .vscode/
