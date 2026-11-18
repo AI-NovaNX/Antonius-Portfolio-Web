@@ -83,9 +83,9 @@ const education = [
   {
     period: '2025',
     degree: 'Frontend Web Programming Hack Bootcamp',
-    school: 'Ahademy',
+    school: 'Ahademy Code',
     href: 'https://ahademycode.com/',
-    logo: '/images/official/Ahademy1.png',
+    logo: '/images/official/Ahademy-logo.png',
     logoClass: 'education-logo-ahademy',
     certificate: '/images/NexRead/Ahademy-certificate.pdf',
     desciption:
