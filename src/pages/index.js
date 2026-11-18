@@ -180,8 +180,8 @@ const experience = [
 
 const projects = [
   {
-    title: 'Nexread- Every visit brings your next great read',
-    href: 'https://nexread.ai-novanx.online/',
+    title: 'NexRead — Every Visit Brings Your Next Great Read',
+    href: '/nexread/',
     image: '/images/official/Nexread.png',
     description:
       'NexRead is a full stack library management application built with Next.js, TypeScript, NestJS, and PostgreSQL. It offers book search, borrowing and return tracking, and administrative tools through a responsive, user-friendly interface.',
@@ -580,15 +580,18 @@ const PortfolioHome = () => {
                     <a
                       className="project-image"
                       href={project.href}
-                      target="_blank"
-                      rel="noreferrer"
+                      target={project.href.startsWith('http') ? '_blank' : undefined}
+                      rel={project.href.startsWith('http') ? 'noreferrer' : undefined}
                       tabIndex={-1}
                       aria-hidden="true">
                       <img src={project.image} alt="" loading="lazy" />
                     </a>
                     <CardContent className="card-copy">
                       <CardTitle className="card-heading">
-                        <a href={project.href} target="_blank" rel="noreferrer">
+                        <a
+                          href={project.href}
+                          target={project.href.startsWith('http') ? '_blank' : undefined}
+                          rel={project.href.startsWith('http') ? 'noreferrer' : undefined}>
                           {project.title}
                           <ExternalArrow />
                         </a>
