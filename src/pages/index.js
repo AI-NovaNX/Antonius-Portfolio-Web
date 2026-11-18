@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Card, CardContent, CardDescription, CardTitle } from '../components/ui/card';
 import {
@@ -59,6 +59,8 @@ const education = [
     school: 'RevoU',
     href: 'https://revou.co/',
     logo: '/images/official/Logo_revou.png',
+    certificate:
+      '/images/NexRead/Antonius Eko Indriarto-FSSE-2026-11-180515874530-Certificate of Completion.pdf',
     description:
       'Completed an intensive software engineering program focused on building practical frontend and backend skills using React, Next.js, TypeScript, Node.js, REST APIs, and database fundamentals.',
     skills: [
@@ -85,6 +87,7 @@ const education = [
     href: 'https://ahademycode.com/',
     logo: '/images/official/Ahademy1.png',
     logoClass: 'education-logo-ahademy',
+    certificate: '/images/NexRead/Ahademy-certificate.pdf',
     desciption:
       'Completed a 3-month intensive bootcamp focused on frontend web development, covering HTML, CSS, JavaScript, and modern frontend frameworks.',
     skills: [
@@ -376,6 +379,8 @@ const ThemeToggle = () => {
 
 const PortfolioHome = () => {
   const [active, setActive] = useState('about');
+  const [selectedCertificate, setSelectedCertificate] = useState(null);
+  const certificateCloseRef = useRef(null);
 
   useEffect(() => {
     const updateSpotlight = event => {
@@ -393,6 +398,31 @@ const PortfolioHome = () => {
       window.removeEventListener('pointermove', updateSpotlight);
     };
   }, []);
+
+  useEffect(() => {
+    if (!selectedCertificate) {
+      return undefined;
+    }
+
+    const previousOverflow = document.body.style.overflow;
+    const closeOnEscape = event => {
+      if (event.key === 'Escape') {
+        setSelectedCertificate(null);
+      }
+    };
+
+    document.body.style.overflow = 'hidden';
+    certificateCloseRef.current?.focus();
+    window.addEventListener('keydown', closeOnEscape);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener('keydown', closeOnEscape);
+    };
+  }, [selectedCertificate]);
+
+  const openCertificate = item => setSelectedCertificate(item);
+  const closeCertificate = () => setSelectedCertificate(null);
 
   return (
     <div className="portfolio-page">
@@ -502,30 +532,51 @@ const PortfolioHome = () => {
             <section id="education" data-section className="content-section" aria-label="Education">
               <SectionHeading>Education</SectionHeading>
               <ol className="experience-list">
-                {education.map(item => (
-                  <Card as="li" className="experience-card" key={item.period}>
-                    <div className="period">
-                      {item.period}
-                      {item.logo && (
-                        <img
-                          className={`education-logo ${item.logoClass || ''}`}
-                          src={item.logo}
-                          alt={`${item.school} logo`}
-                        />
-                      )}
-                    </div>
-                    <CardContent className="card-copy">
-                      <CardTitle className="card-heading">
-                        <a href={item.href} target="_blank" rel="noreferrer">
-                          {item.degree} · {item.school}
-                          <ExternalArrow />
-                        </a>
-                      </CardTitle>
-                      <CardDescription>{item.description}</CardDescription>
-                      {item.skills && <SkillList skills={item.skills} />}
-                    </CardContent>
-                  </Card>
-                ))}
+                {education.map(item => {
+                  const hasCertificate = Boolean(item.certificate);
+
+                  return (
+                    <Card as="li" className="experience-card" key={item.period}>
+                      <div className="period">
+                        {item.period}
+                        {item.logo && (
+                          <img
+                            className={`education-logo ${item.logoClass || ''}`}
+                            src={item.logo}
+                            alt={`${item.school} logo`}
+                          />
+                        )}
+                      </div>
+                      <CardContent className="card-copy">
+                        <CardTitle className="card-heading">
+                          {hasCertificate ? (
+                            <span>
+                              {item.degree} · {item.school}
+                            </span>
+                          ) : (
+                            <a href={item.href} target="_blank" rel="noreferrer">
+                              {item.degree} · {item.school}
+                              <ExternalArrow />
+                            </a>
+                          )}
+                        </CardTitle>
+                        {hasCertificate && (
+                          <button
+                            type="button"
+                            className="certificate-trigger"
+                            onClick={() => openCertificate(item)}
+                            aria-haspopup="dialog"
+                            aria-expanded={selectedCertificate?.school === item.school}
+                            aria-controls="education-certificate-drawer">
+                            View Certificate
+                          </button>
+                        )}
+                        <CardDescription>{item.description}</CardDescription>
+                        {item.skills && <SkillList skills={item.skills} />}
+                      </CardContent>
+                    </Card>
+                  );
+                })}
               </ol>
             </section>
 
@@ -681,6 +732,63 @@ const PortfolioHome = () => {
           </p>
         </footer>
       </div>
+      {selectedCertificate && (
+        <div
+          className="certificate-drawer-backdrop"
+          role="presentation"
+          onMouseDown={event => {
+            if (event.target === event.currentTarget) {
+              closeCertificate();
+            }
+          }}>
+          <aside
+            id="education-certificate-drawer"
+            className="certificate-drawer"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="certificate-drawer-title">
+            <header className="certificate-drawer-header">
+              <div>
+                <p>Certificate of Completion</p>
+                <h2 id="certificate-drawer-title">
+                  {selectedCertificate.degree} · {selectedCertificate.school}
+                </h2>
+              </div>
+              <button
+                type="button"
+                className="certificate-drawer-close"
+                onClick={closeCertificate}
+                aria-label="Close certificate drawer"
+                ref={certificateCloseRef}>
+                <svg aria-hidden="true" viewBox="0 0 24 24">
+                  <path d="m6 6 12 12M18 6 6 18" />
+                </svg>
+              </button>
+            </header>
+            <div className="certificate-document">
+              <object
+                data={`${selectedCertificate.certificate}#view=FitH&toolbar=0`}
+                type="application/pdf"
+                aria-label={`${selectedCertificate.school} ${selectedCertificate.degree} certificate for Antonius Eko Indriarto`}>
+                <p>
+                  Your browser cannot display this PDF inline.{' '}
+                  <a href={selectedCertificate.certificate} target="_blank" rel="noreferrer">
+                    Open the certificate in a new tab.
+                  </a>
+                </p>
+              </object>
+            </div>
+            <footer className="certificate-drawer-actions">
+              <a href={selectedCertificate.href} target="_blank" rel="noreferrer">
+                Visit {selectedCertificate.school} <ExternalArrow />
+              </a>
+              <a href={selectedCertificate.certificate} target="_blank" rel="noreferrer">
+                Open certificate in new tab <ExternalArrow />
+              </a>
+            </footer>
+          </aside>
+        </div>
+      )}
     </div>
   );
 };
@@ -744,7 +852,7 @@ const ContactForm = () => {
       });
 
       if (response.ok) {
-        setStatusMessage('Thanks for reaching out! I\'ll get back to you soon.');
+        setStatusMessage(`Thanks for reaching out! I'll get back to you soon.`);
         setFormData({ name: '', email: '', message: '' });
         setTimeout(() => setStatusMessage(''), 3000);
       } else {

@@ -6,7 +6,7 @@ import './portfolio.css';
 import './nexread.css';
 
 const features = [
-  'Secure login and registration using HttpOnly session cookies',
+  'Secure login with short-lived JWT access tokens and rotating refresh tokens',
   'Book discovery by title, author, category, and rating',
   'Reader journeys covering cart, checkout, loan history, profile, and reviews',
   'Author profiles with summaries and related book collections',
@@ -14,14 +14,221 @@ const features = [
   'Protected management tools for books, loans, users, authors, categories, and reviews',
 ];
 
-const technologies = [
-  'Next.js 16',
-  'React 19',
-  'TypeScript',
-  'Tailwind CSS 4',
-  'shadcn/ui',
-  'React Hook Form',
-  'Railway API',
+const visualDesignPrinciples = [
+  {
+    name: 'Neon Glow',
+    copy: 'Luminous cyan, violet, and electric-blue accents create energy around primary actions, progress, and feedback. The glow is used selectively so that it guides attention without competing with book content or reducing readability.',
+  },
+  {
+    name: 'Modern',
+    copy: 'Clean typography, generous spacing, rounded surfaces, and a clear card hierarchy make a feature-rich library feel familiar and easy to scan. Responsive behavior keeps the same visual system usable from mobile devices to desktop workspaces.',
+  },
+  {
+    name: 'Futuristic',
+    copy: 'A deep interface, layered gradients, translucent surfaces, and data-rich progress elements give NexRead a forward-looking identity. The direction supports the product vision of turning a conventional library service into an engaging digital experience.',
+  },
+];
+
+const technologyGroups = [
+  {
+    name: 'Frontend',
+    summary:
+      'A typed, component-driven interface optimized for responsive reader and administrator journeys.',
+    items: [
+      {
+        name: 'Next.js 16',
+        icon: '/images/NexRead/icon-nextjs.svg',
+        role: 'Application structure and routing',
+        reason:
+          'I chose the App Router to organize public, authenticated, and administrator experiences within a production-ready React framework.',
+      },
+      {
+        name: 'React 19',
+        icon: '/images/NexRead/icon-react.svg',
+        role: 'Interactive and reusable UI components',
+        reason:
+          'Its component model supports shared catalog cards, filters, forms, feedback dialogs, and stateful borrowing workflows without duplicating interface logic.',
+      },
+      {
+        name: 'TypeScript',
+        icon: '/images/NexRead/icon-typescript.svg',
+        role: 'Type-safe components and API integration',
+        reason:
+          'Static typing makes data contracts explicit and catches mismatches between UI state, form values, and backend responses earlier in development.',
+      },
+      {
+        name: 'Tailwind CSS 4',
+        icon: '/images/NexRead/icon-tailwind.svg',
+        role: 'Responsive layout and visual consistency',
+        reason:
+          'Utility-first styling made it efficient to implement the supplied designs consistently across desktop and mobile screen sizes.',
+      },
+      {
+        name: 'shadcn/ui',
+        icon: '/images/NexRead/icon-shadcn.svg',
+        role: 'Accessible interface primitives',
+        reason:
+          'I selected customizable, code-owned components to accelerate dialogs, controls, and feedback patterns while preserving NexRead’s visual identity.',
+      },
+      {
+        name: 'React Hook Form',
+        icon: '/images/NexRead/icon-react-hook-form.svg',
+        role: 'Authentication and data-entry forms',
+        reason:
+          'It provides efficient field management and validation with minimal re-rendering for login and administrative forms.',
+      },
+    ],
+  },
+  {
+    name: 'Backend',
+    summary:
+      'A modular, relational, security-conscious API supported by automated verification and controlled delivery.',
+    items: [
+      {
+        name: 'Node.js',
+        icon: '/images/NexRead/icon-nodejs.svg',
+        role: 'Backend JavaScript runtime',
+        reason:
+          'Using the JavaScript ecosystem across the stack simplifies development context while supporting an API-oriented application efficiently.',
+      },
+      {
+        name: 'NestJS 11',
+        icon: '/images/NexRead/icon-nestjs.svg',
+        role: 'Modular REST API architecture',
+        reason:
+          'Modules, dependency injection, guards, decorators, and exception filters provide a disciplined structure for a growing domain with clear boundaries.',
+      },
+      {
+        name: 'PostgreSQL',
+        icon: '/images/NexRead/icon-postgresql.svg',
+        role: 'Relational source of truth',
+        reason:
+          'The library domain depends on reliable relationships and constraints across users, books, physical copies, loans, reviews, carts, and audit records.',
+      },
+      {
+        name: 'Prisma ORM 7',
+        icon: '/images/NexRead/icon-prisma.svg',
+        role: 'Typed data access and migrations',
+        reason:
+          'Prisma provides a readable schema, generated types, migration history, and safe repository implementation over PostgreSQL.',
+      },
+      {
+        name: 'class-validator / class-transformer',
+        icon: '/images/NexRead/icon-validation.svg',
+        role: 'Request DTO validation',
+        reason:
+          'Declarative validation lets the global ValidationPipe reject malformed or unexpected input before it reaches business logic.',
+      },
+      {
+        name: 'Passport, JWT, and bcrypt',
+        icon: '/images/NexRead/icon-jwt.svg',
+        role: 'Authentication and authorization',
+        reason:
+          'Short-lived access tokens, rotating refresh tokens, hashed token storage, and role guards protect member and administrator capabilities.',
+      },
+      {
+        name: 'Swagger / OpenAPI 3.0',
+        icon: '/images/NexRead/icon-swagger.svg',
+        role: 'Executable API documentation',
+        reason:
+          'Documented endpoints, DTOs, status codes, and Bearer authentication give frontend integration a clear, testable contract.',
+      },
+      {
+        name: 'Jest and Supertest',
+        icon: '/images/NexRead/icon-jest.svg',
+        role: 'Unit and end-to-end testing',
+        reason:
+          'They verify business services, security boundaries, error translation, and integrated HTTP behavior before changes are released.',
+      },
+      {
+        name: 'Postman / Newman',
+        icon: '/images/NexRead/icon-postman.svg',
+        role: 'API smoke and regression testing',
+        reason:
+          'The same collection can validate authentication, CRUD lifecycles, protected routes, and constraints locally or against Railway staging.',
+      },
+      {
+        name: 'GitHub Actions and Railway',
+        icon: '/images/NexRead/icon-github-actions.svg',
+        role: 'CI/CD and managed deployment',
+        reason:
+          'Automated quality gates promote passing revisions to staging, while readiness checks, smoke tests, and manual approval protect production releases.',
+      },
+    ],
+  },
+];
+
+const securityMiddleware = [
+  {
+    name: 'Helmet',
+    icon: '/images/NexRead/icon-helmet.svg',
+    role: 'HTTP security headers and Content Security Policy',
+    explanation:
+      'Helmet hardens every response with security-focused HTTP headers. Its Content Security Policy restricts which image, script, and stylesheet sources the application is allowed to load, reducing exposure to common browser-based attacks.',
+  },
+  {
+    name: 'CORS',
+    icon: '/images/NexRead/icon-cors.svg',
+    role: 'Controlled cross-origin API access',
+    explanation:
+      'The API reads its permitted frontend origin from FRONTEND_URL and limits the accepted HTTP methods and request headers. This prevents unapproved web origins from interacting with NexRead through a browser.',
+  },
+  {
+    name: 'Request ID & HTTP Logging',
+    icon: '/images/NexRead/icon-logging.svg',
+    role: 'Traceable requests and operational visibility',
+    explanation:
+      'Custom Express middleware assigns an X-Request-Id to every request and records its method, path, status code, identifier, and processing time. These correlated logs make production debugging, monitoring, and incident investigation significantly faster.',
+  },
+  {
+    name: 'NestJS Throttler',
+    icon: '/images/NexRead/icon-throttler.svg',
+    role: 'IP-based API rate limiting',
+    explanation:
+      'A global throttling guard limits request volume by client IP. Environment-configurable limits and time windows help protect login and public endpoints from brute-force attempts, excessive traffic, and automated abuse.',
+  },
+  {
+    name: 'ValidationPipe',
+    icon: '/images/NexRead/icon-validation.svg',
+    role: 'DTO-based request validation and transformation',
+    explanation:
+      'The global pipe works with class-validator and class-transformer to validate incoming payloads. whitelist removes fields that are not declared in a DTO, while transform converts accepted values into the expected application types.',
+  },
+  {
+    name: 'Passport & JWT',
+    icon: '/images/NexRead/icon-jwt.svg',
+    role: 'Token-based authentication',
+    explanation:
+      'Passport, passport-jwt, and @nestjs/jwt establish the authenticated user context. JwtStrategy verifies each token and JwtAuthGuard protects endpoints that require a signed-in NexRead user.',
+  },
+  {
+    name: 'Role-Based Access Control',
+    icon: '/images/NexRead/icon-rbac.svg',
+    role: 'USER and ADMIN authorization boundaries',
+    explanation:
+      'RolesGuard and the @Roles() decorator apply permissions at endpoint level. Administrative capabilities—including user, inventory, and dashboard management—remain unavailable to standard reader accounts.',
+  },
+  {
+    name: 'Prisma Exception Filter',
+    icon: '/images/NexRead/icon-prisma.svg',
+    role: 'Safe and consistent database error responses',
+    explanation:
+      'The global filter converts Prisma failures into predictable HTTP responses without exposing internal database details. Unique-constraint violations become 409 Conflict responses, while missing records become 404 Not Found.',
+  },
+  {
+    name: 'Multer',
+    icon: '/images/NexRead/icon-upload.svg',
+    role: 'Validated multipart file handling',
+    explanation:
+      'Multer handles multipart/form-data uploads through the NestJS Express platform. NexRead uses it for book covers and user avatars, with file-format validation and size limits protecting storage and processing resources.',
+  },
+  {
+    name: 'Trusted Proxy',
+    icon: '/images/NexRead/icon-proxy.svg',
+    role: 'Accurate client identity behind Railway',
+    explanation:
+      'The trust proxy configuration allows NestJS to interpret forwarding information from Railway’s reverse proxy correctly. Accurate client IP addresses keep request logging and IP-based rate limiting dependable in production.',
+  },
 ];
 
 const entities = [
@@ -43,6 +250,25 @@ const decisions = [
   {
     title: 'Reusable, data-driven interface patterns',
     copy: 'Shared cards, headers, filters, forms, feedback dialogs, and pagination patterns create a consistent experience across a feature-rich application and reduce duplicated UI logic.',
+  },
+];
+
+const developmentApproach = [
+  {
+    title: 'Model the business workflow before the endpoints',
+    copy: 'Borrowing was defined as an explicit lifecycle: an available physical copy becomes loaned when a member borrows it, moves to Return Requested when the member initiates a return, and becomes available again only after an administrator verifies the physical book.',
+  },
+  {
+    title: 'Keep business logic independent from data access',
+    copy: 'NestJS services depend on abstract repository contracts, while Prisma-backed repositories implement persistence through a shared Prisma service. This repository pattern keeps domain behavior testable and reduces coupling to the database layer.',
+  },
+  {
+    title: 'Treat validation and authorization as system boundaries',
+    copy: 'Global DTO validation rejects invalid or unknown fields, JWT and role guards separate public, member, and administrator capabilities, and database constraint errors are translated into clear 400, 404, or 409 responses.',
+  },
+  {
+    title: 'Release only after automated quality gates pass',
+    copy: 'Formatting, linting, type checks, coverage, build verification, migrations, end-to-end tests, Newman API tests, and production dependency checks run in CI before a revision can progress through the delivery pipeline.',
   },
 ];
 
@@ -118,6 +344,10 @@ const NexReadPage = () => (
             <a href="#decisions">
               <span />
               Engineering
+            </a>
+            <a href="#quality">
+              <span />
+              Quality
             </a>
             <a href="#architecture">
               <span />
@@ -204,6 +434,34 @@ const NexReadPage = () => (
               the way younger users already interact with technology.
             </p>
 
+            <div className="visual-design-rationale">
+              <p className="problem-label">Visual design direction</p>
+              <h3>A neon, modern, and futuristic identity for Gen Z</h3>
+              <p>
+                NexRead is designed for a broad Gen Z audience—from secondary-school and university
+                students to young professionals entering the workplace. Rather than treating this
+                audience as a single stereotype, I used visual patterns familiar from the digital
+                products, entertainment platforms, and interactive experiences that many younger
+                users encounter every day. The result feels expressive and current without becoming
+                childish or compromising the clarity expected from an academic or professional
+                library service.
+              </p>
+              <div className="visual-principles-grid">
+                {visualDesignPrinciples.map(principle => (
+                  <article key={principle.name}>
+                    <span aria-hidden="true"></span>
+                    <h4>{principle.name}</h4>
+                    <p>{principle.copy}</p>
+                  </article>
+                ))}
+              </div>
+              <p className="design-accessibility-note">
+                The aesthetic is supported by practical UI decisions: glow is reserved for emphasis,
+                text sits on stable high-contrast surfaces, and consistent spacing and hierarchy
+                keep discovery and borrowing tasks easy to understand.
+              </p>
+            </div>
+
             <div className="problem-callout">
               <p className="problem-label">The product opportunity</p>
               <p>
@@ -268,12 +526,22 @@ const NexReadPage = () => (
           <p className="article-number">02</p>
           <div>
             <h2>Turning a broad product scope into a coherent user experience</h2>
+            <div className="problem-callout role-callout">
+              <p className="problem-label">Role · Sole Full-Stack Developer</p>
+              <p>
+                I independently designed and built NexRead from end to end. I owned the complete
+                delivery lifecycle—from product and workflow analysis through frontend and backend
+                development, database modeling, security, testing, documentation, CI/CD, and
+                deployment. No other developers or team members contributed to the
+                application&apos;s implementation.
+              </p>
+            </div>
             <p>
-              I built NexRead as a practical full-stack software engineering project, translating
-              product requirements and interface designs into a responsive application. My work
-              covered reusable frontend components, reader and administrator workflows, form
-              handling, REST API integration, authentication-aware experiences, and consistent
-              feedback for loading, success, and error states.
+              That end-to-end ownership included translating product requirements and interface
+              designs into a responsive application. My implementation covered reusable frontend
+              components, reader and administrator workflows, form handling, REST API integration,
+              authentication-aware experiences, and consistent feedback for loading, success, and
+              error states.
             </p>
             <p>
               The project required balancing two distinct audiences. Readers need a simple path from
@@ -281,7 +549,7 @@ const NexReadPage = () => (
               understandable and safe to use. I approached both sides as one connected system rather
               than a collection of isolated screens.
             </p>
-            <div className="screenshot-stack" aria-label="Product overview images needed">
+            <div className="screenshot-stack" aria-label="NexRead product overview">
               <figure className="case-study-image">
                 <img
                   src="/images/NexRead/Reader-home-page.png"
@@ -337,7 +605,7 @@ const NexReadPage = () => (
                 <li key={feature}>{feature}</li>
               ))}
             </ul>
-            <div className="screenshot-grid">
+            <div className="screenshot-grid reader-experience-grid">
               <figure className="case-study-image">
                 <img
                   src="/images/NexRead/Search-book.png"
@@ -345,9 +613,11 @@ const NexReadPage = () => (
                   loading="lazy"
                 />
                 <figcaption>
-                  <strong>Book Search and Filtering</strong>
-                  Readers can search by keyword and refine the results using category and rating
-                  filters before adding a matching title to their cart or favorites.
+                  <strong>Book Search and Filtering</strong>A React-controlled input uses 400 ms
+                  debouncing to update catalog results as the reader types, eliminating the need to
+                  press Enter while avoiding unnecessary API requests. Readers can still submit
+                  immediately with Enter, refine results using category and rating filters, and add
+                  matching titles to their cart or favorites.
                 </figcaption>
               </figure>
               <figure className="case-study-image">
@@ -363,34 +633,32 @@ const NexReadPage = () => (
                   as a favorite.
                 </figcaption>
               </figure>
-              <div className="screenshot-sequence">
-                <figure className="case-study-image">
-                  <img
-                    src="/images/NexRead/Cart-and-borrowing.png"
-                    alt="NexRead cart showing selectable books, removal controls, a loan summary, and the borrowing action"
-                    loading="lazy"
-                  />
-                  <figcaption>
-                    <strong>Cart and Borrowing Checkout</strong>
-                    Readers can review and select books in their cart, remove unwanted titles, and
-                    confirm the loan summary before submitting a borrowing request.
-                  </figcaption>
-                </figure>
-                <figure className="case-study-image">
-                  <img
-                    src="/images/NexRead/Checkout.png"
-                    alt="NexRead checkout showing reader information, selected book, borrowing date, loan duration, return date, policy agreements, and confirmation action"
-                    loading="lazy"
-                  />
-                  <figcaption>
-                    <strong>Borrowing Request Confirmation</strong>
-                    The checkout step presents the selected book, calculates the return date from
-                    the chosen loan duration, and asks readers to confirm the borrowing policy
-                    before submitting their request.
-                  </figcaption>
-                </figure>
-              </div>
-              <figure className="case-study-image">
+              <figure className="case-study-image cart-checkout-image">
+                <img
+                  src="/images/NexRead/Cart-and-borrowing.png"
+                  alt="NexRead cart showing selectable books, removal controls, a loan summary, and the borrowing action"
+                  loading="lazy"
+                />
+                <figcaption>
+                  <strong>Cart and Borrowing Checkout</strong>
+                  Readers can review and select books in their cart, remove unwanted titles, and
+                  confirm the loan summary before submitting a borrowing request.
+                </figcaption>
+              </figure>
+              <figure className="case-study-image borrowing-confirmation-image">
+                <img
+                  src="/images/NexRead/Checkout.png"
+                  alt="NexRead checkout showing reader information, selected book, borrowing date, loan duration, return date, policy agreements, and confirmation action"
+                  loading="lazy"
+                />
+                <figcaption>
+                  <strong>Borrowing Request Confirmation</strong>
+                  The checkout step presents the selected book, calculates the return date from the
+                  chosen loan duration, and asks readers to confirm the borrowing policy before
+                  submitting their request.
+                </figcaption>
+              </figure>
+              <figure className="case-study-image loan-history-image">
                 <img
                   src="/images/NexRead/Loan-history.png"
                   alt="NexRead borrowed list showing loan status filters, overdue and returned books, due dates, return actions, and review actions"
@@ -421,25 +689,44 @@ const NexReadPage = () => (
                   areas that require attention. Select the image to view it at full resolution.
                 </figcaption>
               </figure>
-              <figure className="case-study-image return-verification-image">
-                <a
-                  href="/images/NexRead/nexread_return_verification_three_stage.png"
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label="Open the return verification workflow at full resolution">
+              <div className="screenshot-stack return-workflow-placements">
+                <figure className="case-study-image return-workflow-step">
                   <img
-                    src="/images/NexRead/nexread_return_verification_three_stage.png"
-                    alt="NexRead administrator return verification workflow showing how an admin identifies a return request, reviews and approves it, and confirms the updated returned status"
+                    src="/images/NexRead/Admin-Return-request.png"
+                    alt="NexRead administrator loan management page for identifying a reader's pending return request"
                     loading="lazy"
                   />
-                </a>
-                <figcaption>
-                  <strong>Return Verification — Three-Step Process</strong>
-                  Administrators locate the relevant request, verify the book and borrower details
-                  before approval, and confirm that the loan record has been updated to Returned.
-                  Select the image to view it at full resolution.
-                </figcaption>
-              </figure>
+                  <figcaption>
+                    <strong>IDENTIFY RETURN REQUEST</strong>
+                    The administrator locates the relevant pending return request and confirms the
+                    borrower and book details before continuing to verification.
+                  </figcaption>
+                </figure>
+                <figure className="case-study-image return-workflow-step">
+                  <img
+                    src="/images/NexRead/Admin-Approve-Return.png"
+                    alt="NexRead return verification dialog showing the borrower, book, loan dates, and approval action for an administrator"
+                    loading="lazy"
+                  />
+                  <figcaption>
+                    <strong>REVIEW &amp; APPROVE</strong>
+                    The administrator reviews the borrower, book, and loan details in the return
+                    verification dialog before approving the request.
+                  </figcaption>
+                </figure>
+                <figure className="case-study-image return-workflow-step">
+                  <img
+                    src="/images/NexRead/Admin-Status-Returned.png"
+                    alt="NexRead administrator loan management page showing the approved request with its status updated to Returned"
+                    loading="lazy"
+                  />
+                  <figcaption>
+                    <strong>CONFIRM UPDATED STATUS</strong>
+                    After approval, the administrator confirms that the loan record has been
+                    successfully updated to Returned, completing the return workflow.
+                  </figcaption>
+                </figure>
+              </div>
             </div>
           </div>
         </section>
@@ -503,8 +790,73 @@ const NexReadPage = () => (
           </div>
         </section>
 
-        <section className="article-section" id="architecture">
+        <section className="article-section" id="quality">
           <p className="article-number">05</p>
+          <div>
+            <h2>A workflow-first, quality-gated development approach</h2>
+            <p>
+              NexRead was developed around the application&apos;s real business flows rather than as
+              a collection of disconnected CRUD screens. I first translated borrowing, physical
+              return approval, account management, and catalog operations into explicit states,
+              permissions, and data constraints. Those rules then guided the API contracts,
+              interface behavior, and automated tests.
+            </p>
+            <div className="decision-list development-approach-list">
+              {developmentApproach.map(item => (
+                <article key={item.title}>
+                  <h3>{item.title}</h3>
+                  <p>{item.copy}</p>
+                </article>
+              ))}
+            </div>
+
+            <ul className="quality-metrics" aria-label="NexRead automated testing results">
+              <li>
+                <strong>92</strong>
+                <span>passing unit tests</span>
+              </li>
+              <li>
+                <strong>20</strong>
+                <span>passing test suites</span>
+              </li>
+              <li>
+                <strong>75%</strong>
+                <span>minimum CI coverage per metric</span>
+              </li>
+              <li>
+                <strong>Staged</strong>
+                <span>approval-gated production delivery</span>
+              </li>
+            </ul>
+
+            <h3 className="subsection-heading">Testing the behavior that protects the product</h3>
+            <p>
+              Jest unit tests cover business services, authorization guards and strategy,
+              environment validation, database-error translation, and response-safety utilities.
+              Supertest end-to-end tests verify integrated behavior, while Postman and Newman cover
+              request validation, authentication, CRUD lifecycles, protected routes, error handling,
+              and database constraints against seeded data.
+            </p>
+
+            <h3 className="subsection-heading">Controlled delivery from main to production</h3>
+            <p>
+              GitHub Actions acts as the CI gate. Revisions that pass the main pipeline are deployed
+              to Railway staging, where database-aware readiness checks and automated smoke tests
+              validate the release. Production remains protected by manual approval, reducing the
+              risk of promoting an unhealthy build.
+            </p>
+            <p>
+              Runtime safeguards include Helmet security headers, per-IP and authentication rate
+              limits, startup environment validation, structured JSON logs with request IDs,
+              graceful shutdown hooks, and separate liveness and database-aware readiness probes.
+              Together, these practices make reliability part of the delivery method rather than a
+              final deployment task.
+            </p>
+          </div>
+        </section>
+
+        <section className="article-section" id="architecture">
+          <p className="article-number">06</p>
           <div>
             <h2>A connected model for catalog and borrowing data</h2>
             <p>
@@ -544,26 +896,70 @@ const NexReadPage = () => (
         </section>
 
         <section className="article-section" id="technology">
-          <p className="article-number">06</p>
+          <p className="article-number">07</p>
           <div>
             <h2>A modern foundation for maintainable product development</h2>
             <p>
-              Next.js App Router provides the application structure, React and TypeScript support
-              predictable component development, and Tailwind CSS with shadcn/ui enables a
-              consistent responsive system. React Hook Form handles authentication forms, while the
-              Railway-hosted API supplies authentication, catalog, user, loan, cart, and review
-              data.
+              I selected the stack around four priorities: a responsive and maintainable interface,
+              explicit contracts between frontend and backend, reliable relational data, and a
+              delivery process that verifies every revision before release. Each technology has a
+              defined responsibility rather than being included only because it is popular.
             </p>
-            <p>
-              Authentication uses HttpOnly session cookies so session credentials are not exposed to
-              client-side JavaScript. Protected administration workflows add another boundary
-              between reader functionality and catalog management.
-            </p>
-            <ul className="technology-list">
-              {technologies.map(technology => (
-                <li key={technology}>{technology}</li>
+            <div className="technology-groups">
+              {technologyGroups.map(group => (
+                <section className="technology-group" key={group.name}>
+                  <div className="technology-group-heading">
+                    <p>{group.name}</p>
+                    <h3>{group.name} technology stack</h3>
+                    <span>{group.summary}</span>
+                  </div>
+                  <ul className="technology-stack-list">
+                    {group.items.map(technology => (
+                      <li key={technology.name}>
+                        <div className="technology-title">
+                          <span className="technology-icon" aria-hidden="true">
+                            <img src={technology.icon} alt="" loading="lazy" />
+                          </span>
+                          <h4>{technology.name}</h4>
+                        </div>
+                        <p className="technology-role">{technology.role}</p>
+                        <p>{technology.reason}</p>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
               ))}
-            </ul>
+            </div>
+            <section className="security-technology" aria-labelledby="security-technology-title">
+              <div className="technology-group-heading">
+                <p>Security &amp; middleware</p>
+                <h3 id="security-technology-title">
+                  Defense in depth across the request lifecycle
+                </h3>
+                <span>
+                  NexRead combines preventive controls, identity checks, input validation,
+                  observability, and safe error translation instead of relying on authentication
+                  alone. Each request passes through a deliberate set of protections before and
+                  after it reaches the application logic.
+                </span>
+              </div>
+              <ul className="security-middleware-list">
+                {securityMiddleware.map(middleware => (
+                  <li key={middleware.name}>
+                    <div className="technology-title">
+                      <span className="technology-icon" aria-hidden="true">
+                        <img src={middleware.icon} alt="" loading="lazy" />
+                      </span>
+                      <div>
+                        <h4>{middleware.name}</h4>
+                        <p className="technology-role">{middleware.role}</p>
+                      </div>
+                    </div>
+                    <p>{middleware.explanation}</p>
+                  </li>
+                ))}
+              </ul>
+            </section>
             <figure className="case-study-image">
               <img
                 src="/images/NexRead/Admin-only-page.png"
@@ -599,7 +995,7 @@ const NexReadPage = () => (
         </section>
 
         <section className="article-section" id="reflection">
-          <p className="article-number">07</p>
+          <p className="article-number">08</p>
           <div>
             <h2>What this project strengthened</h2>
             <p>

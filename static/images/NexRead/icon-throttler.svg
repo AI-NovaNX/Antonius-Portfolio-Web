@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-labelledby="title">
+  <title id="title">API rate limiting</title>
+  <path fill="#5EEAD4" d="M12 4a10 10 0 0 0-8.66 15h2.38a8 8 0 1 1 12.56 0h2.38A10 10 0 0 0 12 4Zm5.66 4.93-4.24 3.18A2.5 2.5 0 1 0 15 14.5c0-.28-.05-.54-.13-.79l2.79-4.78ZM12 13.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"/>
+</svg>

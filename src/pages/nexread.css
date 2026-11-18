@@ -150,7 +150,7 @@
   margin: 0 0 28px;
 }
 .feature-grid,
-.technology-list {
+.technology-stack-list {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -209,12 +209,103 @@
   font-size: 13px;
   margin: 0;
 }
+.development-approach-list {
+  margin-top: 30px;
+}
+.quality-metrics {
+  display: grid;
+  gap: 12px;
+  list-style: none;
+  margin: 38px 0;
+  padding: 0;
+}
+.quality-metrics li {
+  background: rgba(45, 212, 191, 0.08);
+  border: 1px solid rgba(94, 234, 212, 0.2);
+  border-radius: 8px;
+  padding: 18px;
+}
+.quality-metrics strong {
+  color: #5eead4;
+  display: block;
+  font-size: 22px;
+  line-height: 1.2;
+  margin-bottom: 5px;
+}
+.quality-metrics span {
+  color: #94a3b8;
+  font-size: 12px;
+  line-height: 1.5;
+}
 .problem-callout {
   background: rgba(45, 212, 191, 0.08);
   border: 1px solid rgba(94, 234, 212, 0.22);
   border-radius: 8px;
   margin: 32px 0 38px;
   padding: 20px;
+}
+.visual-design-rationale {
+  background: radial-gradient(circle at 88% 12%, rgba(139, 92, 246, 0.16), transparent 34%),
+    radial-gradient(circle at 8% 90%, rgba(34, 211, 238, 0.12), transparent 36%),
+    rgba(15, 23, 42, 0.52);
+  border: 1px solid rgba(94, 234, 212, 0.2);
+  border-radius: 12px;
+  box-shadow: 0 0 28px rgba(34, 211, 238, 0.05);
+  margin: 32px 0;
+  overflow: hidden;
+  padding: 24px;
+  position: relative;
+}
+.visual-design-rationale > h3 {
+  color: #e2e8f0;
+  font-size: 21px;
+  line-height: 1.35;
+  margin: 7px 0 12px;
+}
+.visual-design-rationale > p:not(.problem-label):not(.design-accessibility-note) {
+  color: #a7b2c5;
+  font-size: 13px;
+  line-height: 1.75;
+  margin: 0;
+}
+.visual-principles-grid {
+  display: grid;
+  gap: 12px;
+  margin-top: 22px;
+}
+.visual-principles-grid article {
+  background: rgba(10, 18, 36, 0.62);
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  border-radius: 9px;
+  padding: 18px;
+}
+.visual-principles-grid article > span {
+  background: linear-gradient(90deg, #22d3ee, #8b5cf6);
+  border-radius: 999px;
+  box-shadow: 0 0 12px rgba(34, 211, 238, 0.5);
+  display: block;
+  height: 3px;
+  margin-bottom: 14px;
+  width: 36px;
+}
+.visual-principles-grid h4 {
+  color: #e2e8f0;
+  font-size: 15px;
+  margin: 0 0 8px;
+}
+.visual-principles-grid p {
+  color: #94a3b8;
+  font-size: 12px;
+  line-height: 1.65;
+  margin: 0;
+}
+.visual-design-rationale .design-accessibility-note {
+  border-left: 2px solid #5eead4;
+  color: #cbd5e1;
+  font-size: 12px;
+  line-height: 1.65;
+  margin: 20px 0 0;
+  padding-left: 13px;
 }
 .problem-callout .problem-label {
   color: #5eead4;
@@ -303,14 +394,6 @@
 .screenshot-grid .case-study-image {
   margin: 0;
 }
-.screenshot-sequence {
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
-}
-.screenshot-sequence .case-study-image {
-  margin: 0;
-}
 .screenshot-stack {
   display: flex;
   flex-direction: column;
@@ -352,15 +435,14 @@
   font-size: 13px;
   margin-bottom: 2px;
 }
-.return-verification-image {
+.return-workflow-placements {
   grid-column: 1 / -1;
   width: 100%;
 }
-.return-verification-image a {
-  cursor: zoom-in;
-  display: block;
-}
-.return-verification-image img {
+.cart-checkout-image,
+.borrowing-confirmation-image,
+.loan-history-image {
+  grid-column: 1 / -1;
   width: 100%;
 }
 .admin-dashboard-image {
@@ -450,18 +532,129 @@
   margin: 0;
   max-width: 850px;
 }
-.technology-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 9px;
+.technology-groups {
+  display: grid;
+  gap: 52px;
+  margin-top: 40px;
 }
-.technology-list li {
-  background: rgba(45, 212, 191, 0.1);
-  border-radius: 999px;
+.technology-group-heading {
+  border-left: 3px solid #5eead4;
+  margin-bottom: 22px;
+  padding-left: 18px;
+}
+.technology-group-heading > p {
   color: #5eead4;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  margin: 0 0 6px;
+  text-transform: uppercase;
+}
+.technology-group-heading h3 {
+  color: #e2e8f0;
+  font-size: 20px;
+  margin: 0 0 7px;
+}
+.technology-group-heading span {
+  color: #94a3b8;
+  display: block;
+  font-size: 13px;
+  line-height: 1.6;
+  max-width: 680px;
+}
+.technology-stack-list {
+  display: grid;
+  gap: 12px;
+}
+.technology-stack-list li {
+  background: rgba(15, 23, 42, 0.42);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 8px;
+  padding: 18px;
+}
+.technology-title {
+  align-items: center;
+  display: flex;
+  gap: 11px;
+  margin-bottom: 9px;
+}
+.technology-icon {
+  align-items: center;
+  background: #0f172a;
+  border: 1px solid rgba(148, 163, 184, 0.24);
+  border-radius: 8px;
+  display: inline-flex;
+  flex: 0 0 38px;
+  height: 38px;
+  justify-content: center;
+  padding: 8px;
+  width: 38px;
+}
+.technology-icon img {
+  display: block;
+  height: 100%;
+  object-fit: contain;
+  width: 100%;
+}
+.technology-stack-list h4 {
+  color: #e2e8f0;
+  font-size: 15px;
+  line-height: 1.4;
+  margin: 0;
+}
+.technology-stack-list .technology-role {
+  color: #5eead4;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin: 0 0 10px;
+  text-transform: uppercase;
+}
+.technology-stack-list li > p:last-child {
+  color: #94a3b8;
   font-size: 12px;
-  font-weight: 600;
-  padding: 8px 13px;
+  line-height: 1.65;
+  margin: 0;
+}
+.security-technology {
+  border-top: 1px solid rgba(148, 163, 184, 0.16);
+  margin-top: 38px;
+  padding-top: 38px;
+}
+.security-middleware-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 22px;
+}
+.security-middleware-list li {
+  background: linear-gradient(145deg, rgba(15, 23, 42, 0.68), rgba(15, 23, 42, 0.34));
+  border: 1px solid rgba(94, 234, 212, 0.16);
+  border-radius: 8px;
+  padding: 18px;
+}
+.security-middleware-list .technology-title {
+  align-items: flex-start;
+}
+.security-middleware-list h4 {
+  color: #e2e8f0;
+  font-size: 15px;
+  line-height: 1.4;
+  margin: 0 0 4px;
+}
+.security-middleware-list .technology-role {
+  color: #5eead4;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+  margin: 0;
+  text-transform: uppercase;
+}
+.security-middleware-list li > p {
+  color: #94a3b8;
+  font-size: 12px;
+  line-height: 1.65;
+  margin: 0;
 }
 .article-footer {
   align-items: flex-start;
@@ -514,6 +707,21 @@
   .entity-grid,
   .screenshot-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+  .reader-experience-grid {
+    grid-template-columns: 1fr;
+  }
+  .quality-metrics {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .technology-stack-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .security-middleware-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .visual-principles-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
   .article-section {
     grid-template-columns: 70px 1fr;
@@ -602,6 +810,61 @@ html[data-theme='light'] .demo-access a {
 }
 html[data-theme='light'] .decision-list h3 {
   color: #0f172a;
+}
+html[data-theme='light'] .quality-metrics li {
+  background: #f0fdfa;
+  border-color: rgba(13, 148, 136, 0.2);
+}
+html[data-theme='light'] .quality-metrics strong {
+  color: #0f766e;
+}
+html[data-theme='light'] .quality-metrics span {
+  color: #475569;
+}
+html[data-theme='light'] .technology-group-heading h3,
+html[data-theme='light'] .technology-stack-list h4 {
+  color: #0f172a;
+}
+html[data-theme='light'] .technology-group-heading span,
+html[data-theme='light'] .technology-stack-list li > p:last-child {
+  color: #475569;
+}
+html[data-theme='light'] .technology-stack-list li {
+  background: #f8fafc;
+  border-color: rgba(71, 85, 105, 0.18);
+}
+html[data-theme='light'] .visual-design-rationale {
+  background: radial-gradient(circle at 88% 12%, rgba(139, 92, 246, 0.09), transparent 34%),
+    radial-gradient(circle at 8% 90%, rgba(13, 148, 136, 0.08), transparent 36%), #f8fafc;
+  border-color: rgba(13, 148, 136, 0.2);
+}
+html[data-theme='light'] .visual-design-rationale > h3,
+html[data-theme='light'] .visual-principles-grid h4 {
+  color: #0f172a;
+}
+html[data-theme='light']
+  .visual-design-rationale
+  > p:not(.problem-label):not(.design-accessibility-note),
+html[data-theme='light'] .visual-principles-grid p,
+html[data-theme='light'] .visual-design-rationale .design-accessibility-note {
+  color: #475569;
+}
+html[data-theme='light'] .visual-principles-grid article {
+  background: rgba(255, 255, 255, 0.82);
+  border-color: rgba(71, 85, 105, 0.16);
+}
+html[data-theme='light'] .security-technology {
+  border-color: rgba(71, 85, 105, 0.18);
+}
+html[data-theme='light'] .security-middleware-list li {
+  background: linear-gradient(145deg, #f8fafc, #f0fdfa);
+  border-color: rgba(13, 148, 136, 0.2);
+}
+html[data-theme='light'] .security-middleware-list h4 {
+  color: #0f172a;
+}
+html[data-theme='light'] .security-middleware-list li > p {
+  color: #475569;
 }
 html[data-theme='light'] .subsection-heading,
 html[data-theme='light'] .problem-callout p:last-child {
