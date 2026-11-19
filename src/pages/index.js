@@ -204,7 +204,7 @@ const projects = [
   },
   {
     title: 'RevoShop - Modern Online Shopping',
-    href: 'https://revoshop.ai-novanx.online/',
+    href: '/revoshop/',
     image: '/images/official/Revoshop.png',
     description:
       'RevoShop is a modern e-commerce web application built with Next.js, React, TypeScript, Tailwind CSS, and mockup data. It showcases product catalog, category filtering, product detail, promotional deals, shopping cart flow, login UI, and admin section.',
@@ -212,7 +212,7 @@ const projects = [
   },
   {
     title: 'FinTrack API Documentation - Swagger',
-    href: 'https://milestone-4-ai-novanx-production.up.railway.app/docs',
+    href: '/fintrack/',
     image: '/images/official/Fintech-API.png',
     description:
       'Interactive Swagger/OpenAPI documentation for FinTrack API, a personal finance backend-only solution built with NestJS, Prisma, PostgreSQL, JWT authentication, role-based access control, and protected endpoints for users, accounts, categories, and transactions.',
@@ -220,7 +220,7 @@ const projects = [
   },
   {
     title: 'RevoFun - Browser-Based Gaming Website',
-    href: 'https://ai-novanx.online/src/indeks.html',
+    href: '/revofun/',
     image: '/images/official/RevoFun.png',
     description:
       'Live demo of RevoFun, a browser-based gaming website built with HTML5, CSS3, Tailwind CSS, and Vanilla JavaScript. Includes a responsive landing page, mobile navigation, and three mini games: Battleship War, Avoid the Falling Objects, and Memory Card Game with score tracking and local leaderboard storage.',

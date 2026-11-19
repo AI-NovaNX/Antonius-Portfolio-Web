@@ -70,6 +70,38 @@
   line-height: 0.95;
   margin: 16px 0;
 }
+.revoshop-hero-title {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  margin: 16px 0;
+}
+.revoshop-hero-title h1 {
+  font-family: 'Arial Rounded MT Bold', 'Trebuchet MS', Inter, ui-sans-serif, system-ui, sans-serif;
+  font-size: clamp(32px, 5vw, 54px);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin: 0;
+}
+.revoshop-header-logo {
+  aspect-ratio: 3 / 1;
+  display: block;
+  flex: 0 0 clamp(120px, 16vw, 170px);
+  overflow: hidden;
+  position: relative;
+  width: clamp(120px, 16vw, 170px);
+}
+.revoshop-header-logo img {
+  display: block;
+  height: auto;
+  left: -27%;
+  max-width: none;
+  position: absolute;
+  top: -103%;
+  width: 160%;
+}
 .nexread-hero .nexread-hero-logo {
   background: #000;
   border-radius: 10px;
@@ -423,6 +455,10 @@
   height: auto;
   width: 100%;
 }
+.mobile-comparison-images {
+  display: grid;
+  gap: 14px;
+}
 .case-study-image figcaption {
   color: #64748b;
   font-size: 12px;
@@ -465,6 +501,11 @@
 }
 .diagram-image img {
   width: 100%;
+}
+.revoshop-architecture-image img {
+  height: auto;
+  max-height: none;
+  object-fit: contain;
 }
 .api-documentation-image {
   width: 100%;
@@ -616,6 +657,89 @@
   line-height: 1.65;
   margin: 0;
 }
+.language-composition {
+  background: rgba(15, 23, 42, 0.42);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 10px;
+  margin: 52px 0 0;
+  padding: 24px;
+}
+.frontend-language-composition {
+  margin-top: 28px;
+}
+.backend-language-composition {
+  margin-top: 28px;
+}
+.language-composition figcaption h3 {
+  color: #e2e8f0;
+  font-size: 20px;
+  margin: 5px 0 10px;
+}
+.language-composition figcaption > p:last-child {
+  font-size: 13px;
+  margin: 0;
+}
+.language-composition-bar {
+  border-radius: 999px;
+  display: flex;
+  height: 10px;
+  margin: 24px 0 16px;
+  overflow: hidden;
+  width: 100%;
+}
+.language-composition-bar > span {
+  display: block;
+  height: 100%;
+}
+.language-js {
+  background: #f1e05a;
+}
+.language-html {
+  background: #e34c26;
+}
+.language-css {
+  background: #663399;
+}
+.language-typescript {
+  background: #3178c6;
+}
+.language-other {
+  background: #e5e7eb;
+}
+.language-shell {
+  background: #89e051;
+}
+.language-composition-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 22px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.language-composition-legend li {
+  align-items: center;
+  color: #94a3b8;
+  display: flex;
+  font-size: 12px;
+  gap: 6px;
+}
+.language-composition-legend li > span {
+  border-radius: 50%;
+  display: inline-block;
+  height: 9px;
+  width: 9px;
+}
+.language-composition-legend strong {
+  color: #cbd5e1;
+}
+.language-composition-note {
+  border-top: 1px solid rgba(148, 163, 184, 0.12);
+  color: #64748b;
+  font-size: 11px;
+  margin: 20px 0 0;
+  padding-top: 16px;
+}
 .security-technology {
   border-top: 1px solid rgba(148, 163, 184, 0.16);
   margin-top: 38px;
@@ -732,6 +856,10 @@
   .screenshot-grid-mobile > .screenshot-placeholder:last-child:nth-child(even) {
     grid-column: auto;
   }
+  .mobile-comparison-images {
+    align-items: start;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 @media (min-width: 1024px) {
   .nexread-shell {
@@ -832,6 +960,18 @@ html[data-theme='light'] .technology-stack-list li > p:last-child {
 html[data-theme='light'] .technology-stack-list li {
   background: #f8fafc;
   border-color: rgba(71, 85, 105, 0.18);
+}
+html[data-theme='light'] .language-composition {
+  background: #f8fafc;
+  border-color: rgba(71, 85, 105, 0.18);
+}
+html[data-theme='light'] .language-composition figcaption h3,
+html[data-theme='light'] .language-composition-legend strong {
+  color: #0f172a;
+}
+html[data-theme='light'] .language-composition-legend li,
+html[data-theme='light'] .language-composition figcaption > p:last-child {
+  color: #475569;
 }
 html[data-theme='light'] .visual-design-rationale {
   background: radial-gradient(circle at 88% 12%, rgba(139, 92, 246, 0.09), transparent 34%),

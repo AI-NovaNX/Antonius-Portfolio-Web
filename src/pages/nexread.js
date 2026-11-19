@@ -110,7 +110,7 @@ const technologyGroups = [
         icon: '/images/NexRead/icon-postgresql.svg',
         role: 'Relational source of truth',
         reason:
-          'The library domain depends on reliable relationships and constraints across users, books, physical copies, loans, reviews, carts, and audit records.',
+          'The library domain depends on reliable relationships and constraints across users, catalog books, inventory counters, loans, reviews, carts, and administrative audit records.',
       },
       {
         name: 'Prisma ORM 7',
@@ -263,7 +263,7 @@ const decisions = [
 const developmentApproach = [
   {
     title: 'Model the business workflow before the endpoints',
-    copy: 'Borrowing was defined as an explicit lifecycle: an available physical copy becomes loaned when a member borrows it, moves to Return Requested when the member initiates a return, and becomes available again only after an administrator verifies the physical book.',
+    copy: 'Borrowing was defined as an atomic lifecycle around Book inventory counters. Creating a loan conditionally decreases availableCopies without exceeding totalCopies, while returning a loan records its completion and restores availability. This prevents concurrent requests from over-borrowing the catalog.',
   },
   {
     title: 'Keep business logic independent from data access',
@@ -874,6 +874,11 @@ const NexReadPage = () => (
               categories. This model supports both reader-facing journeys and administrative
               reporting without treating them as separate data silos.
             </p>
+            <p>
+              At catalog level, totalCopies and availableCopies provide efficient inventory counters
+              for atomic borrowing operations. The detailed ERD remains the architectural reference
+              for physical-copy tracking and its associated audit history.
+            </p>
             <div className="entity-grid">
               {entities.map(([name, description]) => (
                 <article key={name}>
@@ -896,9 +901,9 @@ const NexReadPage = () => (
               </a>
               <figcaption>
                 <strong>NexRead Entity Relationship Diagram</strong>
-                The PostgreSQL and Prisma data model connects catalog, inventory, borrowing,
-                reviews, cart activity, and administrative audit history across ten relational
-                models. Select the diagram to view it at full resolution.
+                The PostgreSQL and Prisma data model connects catalog, physical-copy inventory,
+                borrowing, reviews, cart activity, and administrative audit history across ten
+                relational models. Select the diagram to view it at full resolution.
               </figcaption>
             </figure>
           </div>
@@ -936,6 +941,91 @@ const NexReadPage = () => (
                       </li>
                     ))}
                   </ul>
+                  {group.name === 'Frontend' && (
+                    <figure className="language-composition frontend-language-composition">
+                      <figcaption>
+                        <p className="problem-label">Frontend repository composition</p>
+                        <h3>A strongly typed frontend codebase</h3>
+                        <p>
+                          GitHub identifies TypeScript as nearly the entire frontend codebase,
+                          reflecting the project&apos;s emphasis on typed components, application
+                          state, and API contracts. CSS contains the custom presentation rules,
+                          while only a minimal amount of plain JavaScript remains.
+                        </p>
+                      </figcaption>
+                      <div
+                        className="language-composition-bar"
+                        role="img"
+                        aria-label="TypeScript 95.3 percent, CSS 4.6 percent, and JavaScript 0.1 percent">
+                        <span className="language-typescript" style={{ width: '95.3%' }} />
+                        <span className="language-css" style={{ width: '4.6%' }} />
+                        <span className="language-js" style={{ width: '0.1%' }} />
+                      </div>
+                      <ul className="language-composition-legend">
+                        <li>
+                          <span className="language-typescript" />
+                          <strong>TypeScript</strong> 95.3%
+                        </li>
+                        <li>
+                          <span className="language-css" />
+                          <strong>CSS</strong> 4.6%
+                        </li>
+                        <li>
+                          <span className="language-js" />
+                          <strong>JavaScript</strong> 0.1%
+                        </li>
+                      </ul>
+                      <p className="language-composition-note">
+                        These percentages represent the relative amount of frontend repository
+                        content classified by GitHub. They do not measure code quality, development
+                        effort, or the importance of each technology, and Tailwind utility classes
+                        written inside components are counted with those component files.
+                      </p>
+                    </figure>
+                  )}
+                  {group.name === 'Backend' && (
+                    <figure className="language-composition backend-language-composition">
+                      <figcaption>
+                        <p className="problem-label">Backend repository composition</p>
+                        <h3>A TypeScript-first backend codebase</h3>
+                        <p>
+                          GitHub identifies TypeScript as nearly the entire backend repository,
+                          reflecting the typed NestJS modules, services, DTOs, guards, tests, and
+                          Prisma integration. JavaScript supports a small number of runtime or tool
+                          configuration files, while Shell scripts automate selected development or
+                          delivery tasks.
+                        </p>
+                      </figcaption>
+                      <div
+                        className="language-composition-bar"
+                        role="img"
+                        aria-label="TypeScript 98.2 percent, JavaScript 1.4 percent, and Shell 0.4 percent">
+                        <span className="language-typescript" style={{ width: '98.2%' }} />
+                        <span className="language-js" style={{ width: '1.4%' }} />
+                        <span className="language-shell" style={{ width: '0.4%' }} />
+                      </div>
+                      <ul className="language-composition-legend">
+                        <li>
+                          <span className="language-typescript" />
+                          <strong>TypeScript</strong> 98.2%
+                        </li>
+                        <li>
+                          <span className="language-js" />
+                          <strong>JavaScript</strong> 1.4%
+                        </li>
+                        <li>
+                          <span className="language-shell" />
+                          <strong>Shell</strong> 0.4%
+                        </li>
+                      </ul>
+                      <p className="language-composition-note">
+                        These percentages represent repository content classified by GitHub. They do
+                        not measure code quality, architectural importance, or development effort,
+                        and technologies such as PostgreSQL and Prisma are described by their role
+                        rather than by this language calculation.
+                      </p>
+                    </figure>
+                  )}
                 </section>
               ))}
             </div>
