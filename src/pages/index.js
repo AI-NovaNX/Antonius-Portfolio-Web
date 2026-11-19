@@ -135,7 +135,7 @@ const education = [
     href: 'https://www.uajy.ac.id/id-id/',
     logo: '/images/official/logo%20UAJY.png',
     logoClass: 'education-logo-uajy',
-    certificate: '/images/official/ijazah-S1.pdf',
+    certificate: '/images/official/Ijazah-S1.pdf',
     description:
       'Earned a Bachelor of Civil Engineering degree, gaining foundational knowledge in structural engineering, construction management, and quality control.',
     skills: [
@@ -782,19 +782,18 @@ const PortfolioHome = () => {
               </button>
             </header>
             <div className="certificate-document">
-              <object
-                data={`${selectedCertificate.certificate}#view=FitH&toolbar=0`}
-                type="application/pdf"
-                aria-label={`${selectedCertificate.school || selectedCertificate.company} ${
+              <iframe
+                src={`${selectedCertificate.certificate}#view=FitH`}
+                title={`${selectedCertificate.school || selectedCertificate.company} ${
                   selectedCertificate.degree || selectedCertificate.role
-                } certificate for Antonius Eko Indriarto`}>
-                <p>
-                  Your browser cannot display this PDF inline.{' '}
-                  <a href={selectedCertificate.certificate} target="_blank" rel="noreferrer">
-                    Open the certificate in a new tab.
-                  </a>
-                </p>
-              </object>
+                } certificate for Antonius Eko Indriarto`}
+              />
+              <p className="certificate-preview-fallback">
+                Preview unavailable?{' '}
+                <a href={selectedCertificate.certificate} target="_blank" rel="noreferrer">
+                  Open the PDF directly.
+                </a>
+              </p>
             </div>
             <footer className="certificate-drawer-actions">
               <a href={selectedCertificate.href} target="_blank" rel="noreferrer">
