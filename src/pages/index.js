@@ -113,6 +113,7 @@ const education = [
     href: 'https://binus.ac.id/',
     logo: '/images/official/logo%20Binus.png',
     logoClass: 'education-logo-binus',
+    certificate: '/images/official/Ijazah-S2.PDF',
     description:
       'Pursuing a Master of Information System Management degree, focusing on advanced topics in information systems, project management, and technology strategy.',
     skills: [
@@ -131,9 +132,10 @@ const education = [
     period: '1988 - 1995',
     degree: 'Bachelor of Civil Engineering',
     school: 'Universitas Atma Jaya Yogyakarta (UAJY)',
-    href: 'https://https://www.uajy.ac.id/id-id/',
+    href: 'https://www.uajy.ac.id/id-id/',
     logo: '/images/official/logo%20UAJY.png',
     logoClass: 'education-logo-uajy',
+    certificate: '/images/official/ijazah-S1.pdf',
     description:
       'Earned a Bachelor of Civil Engineering degree, gaining foundational knowledge in structural engineering, construction management, and quality control.',
     skills: [
@@ -162,6 +164,8 @@ const experience = [
     role: 'QA/QC Manager',
     company: 'PT WIKA Gedung',
     href: 'https://www.wikagedung.co.id/',
+    certificate: '/images/official/Sertifikat-Mutu-WIKA.pdf',
+    certificateType: 'Quality Management Certificate',
     description:
       'Directly responsible for ensuring that building constructionprojects met company quality standards and satisfied all quality requirements at handover. This experience strengthened my skills in quality assurance and project management.',
     skills: [
@@ -567,7 +571,7 @@ const PortfolioHome = () => {
                             onClick={() => openCertificate(item)}
                             aria-haspopup="dialog"
                             aria-expanded={selectedCertificate?.school === item.school}
-                            aria-controls="education-certificate-drawer">
+                            aria-controls="certificate-drawer">
                             View Certificate
                           </button>
                         )}
@@ -604,6 +608,17 @@ const PortfolioHome = () => {
                           <ExternalArrow />
                         </a>
                       </CardTitle>
+                      {job.certificate && (
+                        <button
+                          type="button"
+                          className="certificate-trigger"
+                          onClick={() => openCertificate(job)}
+                          aria-haspopup="dialog"
+                          aria-expanded={selectedCertificate?.company === job.company}
+                          aria-controls="certificate-drawer">
+                          View Certificate
+                        </button>
+                      )}
                       <CardDescription>{job.description}</CardDescription>
                       <SkillList skills={job.skills} />
                     </CardContent>
@@ -742,16 +757,17 @@ const PortfolioHome = () => {
             }
           }}>
           <aside
-            id="education-certificate-drawer"
+            id="certificate-drawer"
             className="certificate-drawer"
             role="dialog"
             aria-modal="true"
             aria-labelledby="certificate-drawer-title">
             <header className="certificate-drawer-header">
               <div>
-                <p>Certificate of Completion</p>
+                <p>{selectedCertificate.certificateType || 'Certificate of Completion'}</p>
                 <h2 id="certificate-drawer-title">
-                  {selectedCertificate.degree} · {selectedCertificate.school}
+                  {selectedCertificate.degree || selectedCertificate.role} ·{' '}
+                  {selectedCertificate.school || selectedCertificate.company}
                 </h2>
               </div>
               <button
@@ -769,7 +785,9 @@ const PortfolioHome = () => {
               <object
                 data={`${selectedCertificate.certificate}#view=FitH&toolbar=0`}
                 type="application/pdf"
-                aria-label={`${selectedCertificate.school} ${selectedCertificate.degree} certificate for Antonius Eko Indriarto`}>
+                aria-label={`${selectedCertificate.school || selectedCertificate.company} ${
+                  selectedCertificate.degree || selectedCertificate.role
+                } certificate for Antonius Eko Indriarto`}>
                 <p>
                   Your browser cannot display this PDF inline.{' '}
                   <a href={selectedCertificate.certificate} target="_blank" rel="noreferrer">
@@ -780,7 +798,7 @@ const PortfolioHome = () => {
             </div>
             <footer className="certificate-drawer-actions">
               <a href={selectedCertificate.href} target="_blank" rel="noreferrer">
-                Visit {selectedCertificate.school} <ExternalArrow />
+                Visit {selectedCertificate.school || selectedCertificate.company} <ExternalArrow />
               </a>
               <a href={selectedCertificate.certificate} target="_blank" rel="noreferrer">
                 Open certificate in new tab <ExternalArrow />

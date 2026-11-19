@@ -77,6 +77,13 @@ const technologyGroups = [
         reason:
           'It provides efficient field management and validation with minimal re-rendering for login and administrative forms.',
       },
+      {
+        name: 'Vercel',
+        icon: '/images/NexRead/icon-vercel.svg',
+        role: 'Frontend hosting and preview deployment',
+        reason:
+          'I chose Vercel for its native Next.js workflow. It gives the frontend a production-like environment for validating responsive behavior, testing API integration, and reviewing deployable builds before a release is shared with users.',
+      },
     ],
   },
   {
@@ -840,10 +847,12 @@ const NexReadPage = () => (
 
             <h3 className="subsection-heading">Controlled delivery from main to production</h3>
             <p>
-              GitHub Actions acts as the CI gate. Revisions that pass the main pipeline are deployed
-              to Railway staging, where database-aware readiness checks and automated smoke tests
-              validate the release. Production remains protected by manual approval, reducing the
-              risk of promoting an unhealthy build.
+              The Next.js frontend is developed and deployed through Vercel, providing a
+              browser-accessible environment for responsive review and integration testing against
+              the NexRead API. For the backend, GitHub Actions acts as the CI gate. Revisions that
+              pass the main pipeline are deployed to Railway staging, where database-aware readiness
+              checks and automated smoke tests validate the release. Production remains protected by
+              manual approval, reducing the risk of promoting an unhealthy build.
             </p>
             <p>
               Runtime safeguards include Helmet security headers, per-IP and authentication rate
