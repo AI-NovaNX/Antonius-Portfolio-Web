@@ -540,15 +540,22 @@ const PortfolioHome = () => {
                   const hasCertificate = Boolean(item.certificate);
 
                   return (
-                    <Card as="li" className="experience-card" key={item.period}>
+                    <Card as="li" className="experience-card education-card" key={item.period}>
                       <div className="period">
                         {item.period}
                         {item.logo && (
-                          <img
-                            className={`education-logo ${item.logoClass || ''}`}
-                            src={item.logo}
-                            alt={`${item.school} logo`}
-                          />
+                          <a
+                            className="education-logo-link"
+                            href={item.href}
+                            target="_blank"
+                            rel="noreferrer"
+                            aria-label={`Visit ${item.school} website`}>
+                            <img
+                              className={`education-logo ${item.logoClass || ''}`}
+                              src={item.logo}
+                              alt={`${item.school} logo`}
+                            />
+                          </a>
                         )}
                       </div>
                       <CardContent className="card-copy">
@@ -592,14 +599,21 @@ const PortfolioHome = () => {
               <SectionHeading>Experience</SectionHeading>
               <ol className="experience-list">
                 {experience.map(job => (
-                  <Card as="li" className="experience-card" key={job.period}>
+                  <Card as="li" className="experience-card employment-card" key={job.period}>
                     <div className="period">
                       {job.period}
-                      <img
-                        className="experience-company-logo"
-                        src="/images/official/logo%20WG.png"
-                        alt="WIKA Gedung"
-                      />
+                      <a
+                        className="experience-company-logo-link"
+                        href={job.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label={`Visit ${job.company} website`}>
+                        <img
+                          className="experience-company-logo"
+                          src="/images/official/logo%20WG.png"
+                          alt="WIKA Gedung logo"
+                        />
+                      </a>
                     </div>
                     <CardContent className="card-copy">
                       <CardTitle className="card-heading">

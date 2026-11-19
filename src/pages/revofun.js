@@ -340,13 +340,13 @@ const RevoFunPage = () => (
               />
               <ScreenshotPlaceholder
                 label="Image needed · Battleship onboarding"
-                title="Nickname, difficulty, and ship placement"
-                description="Capture the complete pre-game flow or a concise montage showing player identification, Easy/Medium/Hard selection, ship placement, and rotation controls before battle begins."
+                title="Battleship ship placement"
+                description="Use one screenshot of the pre-game ship-placement screen with the selected difficulty, player nickname, fleet, grid, and rotation controls visible. This single state should clearly communicate how players prepare for battle."
               />
               <ScreenshotPlaceholder
                 label="Image needed · Battleship gameplay"
                 title="Modern Battleship War in progress"
-                description="Show the player and enemy grids during an active match with recognizable hit or miss feedback, score information, and the action controls. Add the game-over or leaderboard state as a small secondary frame if useful."
+                description="Use one screenshot of an active match with the player and enemy grids, recognizable hit-or-miss feedback, score information, and action controls visible."
               />
               <ScreenshotPlaceholder
                 label="Image needed · Arcade gameplay"
@@ -356,7 +356,7 @@ const RevoFunPage = () => (
               <ScreenshotPlaceholder
                 label="Image needed · Matching gameplay"
                 title="Memory Card Game"
-                description="Show a partially revealed card board with moves and timer visible, plus either the win overlay or final leaderboard result to demonstrate the complete gameplay loop."
+                description="Use one screenshot of an active round with a partially revealed card board, matched pairs, move count, and timer visible."
               />
             </div>
           </div>
@@ -423,13 +423,13 @@ const RevoFunPage = () => (
             <div className="screenshot-stack">
               <ScreenshotPlaceholder
                 label="Image needed · Responsive evidence"
-                title="Desktop, tablet, and mobile comparison"
-                description="Arrange three screenshots of the same landing-page section side by side inside one exported image. Keep each viewport label visible and use enough resolution for the mobile navigation and game cards to remain readable."
+                title="Responsive tablet landing layout"
+                description="Use one screenshot of the RevoFun landing page at tablet width. Keep the navigation, hero, and game cards visible so the responsive layout can be evaluated from a single image."
               />
               <ScreenshotPlaceholder
                 label="Image needed · Persistence evidence"
-                title="Leaderboard before and after refresh"
-                description="Show a completed game result and the same leaderboard entry after reopening or refreshing the page. Use a demo nickname and avoid exposing browser extensions or personal information."
+                title="Persisted leaderboard after refresh"
+                description="Use one screenshot of the leaderboard after the page has been refreshed, with a recognizable demo nickname and result still visible. Avoid exposing browser extensions or personal information."
               />
             </div>
           </div>

@@ -353,8 +353,8 @@ const FinTrackPage = () => (
             <div className="screenshot-stack" aria-label="Required FinTrack API screenshots">
               <ScreenshotPlaceholder
                 label="Image needed · Authentication"
-                title="Register, login, and Swagger authorization"
-                description="Show the registration or login endpoint with its request schema and successful response, together with the Swagger Authorize control. Mask the token value if it is visible."
+                title="Successful login and JWT response"
+                description="Use one Swagger screenshot of the login endpoint with its request schema and successful response visible. Mask most of the token value while leaving enough context to demonstrate JWT authentication."
               />
               <ScreenshotPlaceholder
                 label="Image needed · Account ownership"
@@ -363,13 +363,13 @@ const FinTrackPage = () => (
               />
               <ScreenshotPlaceholder
                 label="Image needed · Financial workflow"
-                title="Income, expense, and transfer transaction contracts"
-                description="Show the three transaction types and highlight the transfer fields account_id, to_account_id, amount, and nullable category_id. A compact montage of Swagger request schemas is appropriate."
+                title="Transfer transaction contract"
+                description="Use one Swagger screenshot of the transfer transaction request schema. Keep account_id, to_account_id, amount, and nullable category_id readable so the most complex financial workflow is immediately clear."
               />
               <ScreenshotPlaceholder
                 label="Image needed · Authorization"
-                title="Admin category management and role protection"
-                description="Show one successful admin-only category mutation and a 403 Forbidden response for a standard user attempting the same action. Mask bearer tokens."
+                title="Role-protected category mutation"
+                description="Use one Swagger screenshot showing a 403 Forbidden response when a standard user attempts an admin-only category mutation. Mask the bearer token."
               />
             </div>
           </div>
@@ -395,13 +395,13 @@ const FinTrackPage = () => (
             <div className="screenshot-stack">
               <ScreenshotPlaceholder
                 label="Image needed · Business-rule evidence"
-                title="Balance update and reversal sequence"
-                description="Create a three-stage capture from Swagger or Postman: account balance before a transaction, balance after creating it, and restored balance after update/delete reversal. Keep amounts consistent across all stages."
+                title="Automated balance-reversal verification"
+                description="Use one terminal or test-report screenshot showing a passing balance-reversal test after a transaction is updated or deleted. Keep the test name and result readable so the financial rule is demonstrated in a single image."
               />
               <ScreenshotPlaceholder
                 label="Image needed · Security behavior"
-                title="Ownership isolation and forged-identity rejection"
-                description="Show a user requesting another user’s resource and receiving 404, plus an example where a forged owner field is rejected or ignored because ownership comes from JWT."
+                title="Cross-user ownership isolation"
+                description="Use one Swagger or Postman screenshot showing an authenticated user requesting another user’s resource and receiving a 404 Not Found response. Mask all reusable authentication credentials."
               />
             </div>
           </div>

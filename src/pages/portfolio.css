@@ -399,6 +399,27 @@ body * {
   width: 100%;
 }
 
+.experience-company-logo-link {
+  border-radius: 6px;
+  display: inline-block;
+  margin-top: 10px;
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.experience-company-logo-link .experience-company-logo {
+  margin-top: 0;
+}
+
+.experience-company-logo-link:hover {
+  opacity: 0.82;
+  transform: translateY(-2px);
+}
+
+.experience-company-logo-link:focus-visible {
+  outline: 2px solid #5eead4;
+  outline-offset: 4px;
+}
+
 .education-logo {
   border-radius: 50%;
   display: block;
@@ -406,6 +427,27 @@ body * {
   margin-top: 10px;
   object-fit: contain;
   width: 48px;
+}
+
+.education-logo-link {
+  border-radius: 6px;
+  display: inline-block;
+  margin-top: 10px;
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.education-logo-link .education-logo {
+  margin-top: 0;
+}
+
+.education-logo-link:hover {
+  opacity: 0.82;
+  transform: translateY(-2px);
+}
+
+.education-logo-link:focus-visible {
+  outline: 2px solid #5eead4;
+  outline-offset: 4px;
 }
 
 .education-logo.education-logo-ahademy {
@@ -762,6 +804,34 @@ body * {
   .project-card {
     align-items: center;
     grid-template-columns: minmax(0, 1fr) 3fr;
+  }
+  .education-card,
+  .employment-card {
+    grid-template-columns: minmax(0, 1fr) 3fr;
+  }
+  .education-card .period,
+  .employment-card .period {
+    position: relative;
+  }
+  .education-card .education-logo-link {
+    left: 0;
+    margin-top: 0;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .education-card .education-logo-link:hover {
+    transform: translateY(calc(-50% - 2px));
+  }
+  .employment-card .experience-company-logo-link {
+    left: 0;
+    margin-top: 0;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .employment-card .experience-company-logo-link:hover {
+    transform: translateY(calc(-50% - 2px));
   }
   .project-image {
     max-width: none;
