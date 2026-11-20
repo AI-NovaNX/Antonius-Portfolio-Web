@@ -300,11 +300,18 @@ const FinTrackPage = () => (
                 and deletions while ensuring every query and mutation respects ownership?
               </p>
             </div>
-            <ScreenshotPlaceholder
-              label="Image needed · API overview"
-              title="Complete Swagger endpoint overview"
-              description="Capture the deployed Swagger page with the Authentication, Users, Accounts, Categories, and Transactions groups visible. Keep the browser URL in frame so recruiters can recognize this as a live API contract."
-            />
+            <figure className="case-study-image">
+              <img
+                src="/images/Fintrack/Complete-Swagger-endpoint.png"
+                alt="Complete FinTrack Swagger endpoint overview showing the Authentication, Users, Accounts, Categories, and Transactions groups"
+                loading="lazy"
+              />
+              <figcaption>
+                <strong>Complete Swagger endpoint overview</strong>
+                FinTrack documents its authentication, users, accounts, categories, and transactions
+                endpoints in one interactive API contract.
+              </figcaption>
+            </figure>
           </div>
         </section>
 
@@ -350,26 +357,54 @@ const FinTrackPage = () => (
               ))}
             </ul>
             <div className="screenshot-stack" aria-label="Required FinTrack API screenshots">
-              <ScreenshotPlaceholder
-                label="Image needed · Authentication"
-                title="Successful login and JWT response"
-                description="Use one Swagger screenshot of the login endpoint with its request schema and successful response visible. Mask most of the token value while leaving enough context to demonstrate JWT authentication."
-              />
-              <ScreenshotPlaceholder
-                label="Image needed · Account ownership"
-                title="Protected account response with relational transactions"
-                description="Use the demo user token and show GET /accounts/:id returning the owner’s account and nested transactions. Do not display password hashes or a complete reusable JWT."
-              />
-              <ScreenshotPlaceholder
-                label="Image needed · Financial workflow"
-                title="Transfer transaction contract"
-                description="Use one Swagger screenshot of the transfer transaction request schema. Keep account_id, to_account_id, amount, and nullable category_id readable so the most complex financial workflow is immediately clear."
-              />
-              <ScreenshotPlaceholder
-                label="Image needed · Authorization"
-                title="Role-protected category mutation"
-                description="Use one Swagger screenshot showing a 403 Forbidden response when a standard user attempts an admin-only category mutation. Mask the bearer token."
-              />
+              <figure className="case-study-image">
+                <img
+                  src="/images/Fintrack/Successful-login2.png"
+                  alt="Successful FinTrack login request and JWT authentication response in Swagger"
+                  loading="lazy"
+                />
+                <figcaption>
+                  <strong>Successful login and JWT response</strong>
+                  FinTrack authenticates valid credentials and returns a JWT for accessing protected
+                  API endpoints.
+                </figcaption>
+              </figure>
+              <figure className="case-study-image">
+                <img
+                  src="/images/Fintrack/Protected-account.png"
+                  alt="Protected FinTrack account response with owner details and relational transactions in Swagger"
+                  loading="lazy"
+                />
+                <figcaption>
+                  <strong>Protected account response with relational transactions</strong>
+                  An authenticated account request returns the owner&apos;s account data and its
+                  related transactions while preserving user-level access boundaries.
+                </figcaption>
+              </figure>
+              <figure className="case-study-image">
+                <img
+                  src="/images/Fintrack/Transfer-transaction-contract.png"
+                  alt="FinTrack transfer transaction contract showing the request schema in Swagger"
+                  loading="lazy"
+                />
+                <figcaption>
+                  <strong>Transfer transaction contract</strong>
+                  The transfer schema connects source and destination accounts with an amount and
+                  optional category while keeping the financial workflow explicit.
+                </figcaption>
+              </figure>
+              <figure className="case-study-image">
+                <img
+                  src="/images/Fintrack/Role-protected-category.png"
+                  alt="FinTrack role-protected category mutation showing a forbidden response in Swagger"
+                  loading="lazy"
+                />
+                <figcaption>
+                  <strong>Role-protected category mutation</strong>
+                  Role-based authorization rejects category mutations from standard users and
+                  reserves administrative operations for permitted accounts.
+                </figcaption>
+              </figure>
             </div>
           </div>
         </section>
@@ -392,16 +427,30 @@ const FinTrackPage = () => (
               ))}
             </div>
             <div className="screenshot-stack">
-              <ScreenshotPlaceholder
-                label="Image needed · Business-rule evidence"
-                title="Automated balance-reversal verification"
-                description="Use one terminal or test-report screenshot showing a passing balance-reversal test after a transaction is updated or deleted. Keep the test name and result readable so the financial rule is demonstrated in a single image."
-              />
-              <ScreenshotPlaceholder
-                label="Image needed · Security behavior"
-                title="Cross-user ownership isolation"
-                description="Use one Swagger or Postman screenshot showing an authenticated user requesting another user’s resource and receiving a 404 Not Found response. Mask all reusable authentication credentials."
-              />
+              <figure className="case-study-image">
+                <img
+                  src="/images/Fintrack/balance-reversal.png"
+                  alt="Passing automated FinTrack balance-reversal verification tests"
+                  loading="lazy"
+                />
+                <figcaption>
+                  <strong>Automated balance-reversal verification</strong>
+                  Automated tests verify that updating or deleting a transaction reverses its
+                  previous financial effect before the account balance changes again.
+                </figcaption>
+              </figure>
+              <figure className="case-study-image">
+                <img
+                  src="/images/Fintrack/Cross-user.png"
+                  alt="FinTrack cross-user ownership isolation returning a not found response"
+                  loading="lazy"
+                />
+                <figcaption>
+                  <strong>Cross-user ownership isolation</strong>
+                  Requests for resources owned by another user return a not-found response,
+                  protecting private financial data from cross-account access.
+                </figcaption>
+              </figure>
             </div>
           </div>
         </section>
@@ -448,21 +497,42 @@ const FinTrackPage = () => (
               permanently changing demo accounts.
             </p>
             <div className="screenshot-stack">
-              <ScreenshotPlaceholder
-                label="Image needed · Regression evidence"
-                title="Newman HTML report — 73 requests and 89 assertions"
-                description="Capture the report summary showing total requests, assertions, zero failures, run duration, and response-time information. Ensure the numbers remain readable at blog width."
-              />
-              <ScreenshotPlaceholder
-                label="Image needed · Automated verification"
-                title="Unit and E2E test results"
-                description="Show the terminal or test report after npm run test and npm run test:e2e, including passing suites for balance calculations, authentication, ownership, RBAC, validation, throttling, and transfer behavior."
-              />
-              <ScreenshotPlaceholder
-                label="Image needed · Production verification"
-                title="Railway deployment smoke-test evidence"
-                description="Show a concise production smoke-test result or deployed Swagger response with the Railway hostname visible. Do not expose environment variables, database credentials, or JWT secrets."
-              />
+              <figure className="case-study-image">
+                <img
+                  src="/images/Fintrack/Newman-report.png"
+                  alt="FinTrack Newman HTML regression report with 73 requests and 89 assertions"
+                  loading="lazy"
+                />
+                <figcaption>
+                  <strong>Newman HTML report — 73 requests and 89 assertions</strong>
+                  The automated Postman regression run records complete request and assertion
+                  coverage with its execution results in a shareable HTML report.
+                </figcaption>
+              </figure>
+              <figure className="case-study-image">
+                <img
+                  src="/images/Fintrack/Unit-and-E2E-test.png"
+                  alt="Passing FinTrack unit and end-to-end test results"
+                  loading="lazy"
+                />
+                <figcaption>
+                  <strong>Unit and E2E test results</strong>
+                  Passing unit and end-to-end suites verify balance calculations, authentication,
+                  ownership, authorization, validation, throttling, and transfer behavior.
+                </figcaption>
+              </figure>
+              <figure className="case-study-image">
+                <img
+                  src="/images/Fintrack/Railway-smoke-test.png"
+                  alt="FinTrack Railway production smoke test showing the deployment hostname and a successful 200 response"
+                  loading="lazy"
+                />
+                <figcaption>
+                  <strong>Railway deployment smoke-test evidence</strong>
+                  The deployed public endpoint responds successfully with HTTP 200 from the Railway
+                  production hostname without exposing credentials or authentication data.
+                </figcaption>
+              </figure>
             </div>
           </div>
         </section>
@@ -486,16 +556,30 @@ const FinTrackPage = () => (
               ))}
             </div>
             <div className="screenshot-stack">
-              <ScreenshotPlaceholder
-                label="Diagram needed · Entity relationships"
-                title="FinTrack ERD"
-                description="Export the repository ERD at high resolution, showing User, Account, Category, and Transaction relationships, including source and destination account links for transfers."
-              />
-              <ScreenshotPlaceholder
-                label="Diagram needed · Request architecture"
-                title="Authentication, authorization, service, and persistence flow"
-                description="Create a high-level diagram showing API Consumer → NestJS middleware/pipes/guards → Controllers → Services and BalanceUpdatesProvider → Prisma → PostgreSQL, with Swagger and testing tools alongside the request flow."
-              />
+              <figure className="case-study-image">
+                <img
+                  src="/images/Fintrack/erd.png"
+                  alt="FinTrack entity relationship diagram for users, accounts, categories, and transactions"
+                  loading="lazy"
+                />
+                <figcaption>
+                  <strong>FinTrack ERD</strong>
+                  The relational model connects users, accounts, categories, and transactions,
+                  including source and destination account relationships for transfers.
+                </figcaption>
+              </figure>
+              <figure className="case-study-image">
+                <img
+                  src="/images/Fintrack/FinTrack-API-Architecture.png"
+                  alt="FinTrack API architecture showing authentication, authorization, services, balance processing, Prisma, and PostgreSQL"
+                  loading="lazy"
+                />
+                <figcaption>
+                  <strong>Authentication, authorization, service, and persistence flow</strong>
+                  Requests pass through NestJS security and validation boundaries into controllers,
+                  domain services, balance processing, Prisma, and PostgreSQL persistence.
+                </figcaption>
+              </figure>
             </div>
           </div>
         </section>
