@@ -221,7 +221,7 @@ const RevoFunPage = () => (
           </p>
           <h1>RevoFun</h1>
           <p className="article-lead">
-            Casual browser games designed for immediate play—no download, installation, or account
+            Casual browser games designed for immediate play, no download, installation, or account
             required.
           </p>
           <p>
@@ -247,7 +247,7 @@ const RevoFunPage = () => (
 
         <figure className="nexread-preview">
           <img
-            src="/images/official/RevoFun.png"
+            src="/images/RevoFun/RevoFun-Hero.png"
             alt="RevoFun browser-based gaming website preview"
           />
           <figcaption>
@@ -278,11 +278,18 @@ const RevoFunPage = () => (
                 remaining lightweight, responsive, and enjoyable without a backend?
               </p>
             </div>
-            <ScreenshotPlaceholder
-              label="Image needed · Product overview"
-              title="RevoFun landing page and featured games"
-              description="Capture the branded hero, video background, primary call to action, and all three featured game cards in one clear desktop screenshot. This should be the recruiter’s fastest introduction to the product."
-            />
+            <figure className="case-study-image">
+              <img
+                src="/images/RevoFun/landing-page.png"
+                alt="RevoFun landing page showing the branded hero and featured browser games"
+                loading="lazy"
+              />
+              <figcaption>
+                <strong>RevoFun landing page and featured games</strong>
+                The landing experience introduces the RevoFun brand and gives players direct access
+                to its three featured browser games.
+              </figcaption>
+            </figure>
           </div>
         </section>
 
@@ -332,31 +339,66 @@ const RevoFunPage = () => (
               ))}
             </div>
             <div className="screenshot-stack" aria-label="Required RevoFun game screenshots">
-              <ScreenshotPlaceholder
-                label="Image needed · Responsive navigation"
-                title="Mobile landing page and navigation overlay"
-                description="Show the RevoFun homepage at mobile width with the burger menu opened. Include the hero or featured-game context so recruiters can see that navigation adapts without losing the brand experience."
-              />
-              <ScreenshotPlaceholder
-                label="Image needed · Battleship onboarding"
-                title="Battleship ship placement"
-                description="Use one screenshot of the pre-game ship-placement screen with the selected difficulty, player nickname, fleet, grid, and rotation controls visible. This single state should clearly communicate how players prepare for battle."
-              />
-              <ScreenshotPlaceholder
-                label="Image needed · Battleship gameplay"
-                title="Modern Battleship War in progress"
-                description="Use one screenshot of an active match with the player and enemy grids, recognizable hit-or-miss feedback, score information, and action controls visible."
-              />
-              <ScreenshotPlaceholder
-                label="Image needed · Arcade gameplay"
-                title="Avoid Falling Objects"
-                description="Capture an active game with the player, falling hazards, diamond bonus, score, level, and duration visible. Choose a frame that immediately communicates movement and the objective."
-              />
-              <ScreenshotPlaceholder
-                label="Image needed · Matching gameplay"
-                title="Memory Card Game"
-                description="Use one screenshot of an active round with a partially revealed card board, matched pairs, move count, and timer visible."
-              />
+              <figure className="case-study-image">
+                <img
+                  src="/images/RevoFun/Mobile-landing.png"
+                  alt="RevoFun mobile landing page with the navigation overlay open"
+                  loading="lazy"
+                />
+                <figcaption>
+                  <strong>Mobile landing page and navigation overlay</strong>
+                  The responsive navigation keeps essential destinations accessible while preserving
+                  the RevoFun hero and game-discovery experience on smaller screens.
+                </figcaption>
+              </figure>
+              <figure className="case-study-image">
+                <img
+                  src="/images/RevoFun/Battleship-ship-placement.png"
+                  alt="RevoFun Battleship pre-game ship placement interface"
+                  loading="lazy"
+                />
+                <figcaption>
+                  <strong>Battleship ship placement</strong>
+                  Players configure their fleet, rotate ships, and position each vessel on the grid
+                  before beginning a Battleship match.
+                </figcaption>
+              </figure>
+              <figure className="case-study-image">
+                <img
+                  src="/images/RevoFun/War-in-progress.png"
+                  alt="Modern Battleship War match in progress with player and enemy grids"
+                  loading="lazy"
+                />
+                <figcaption>
+                  <strong>Modern Battleship War in progress</strong>
+                  The active match presents both battle grids, turn feedback, scoring, and controls
+                  so players can track each attack and its outcome.
+                </figcaption>
+              </figure>
+              <figure className="case-study-image">
+                <img
+                  src="/images/RevoFun/Avoid-Falling-obj.png"
+                  alt="RevoFun Avoid Falling Objects gameplay with hazards, score, level, and duration"
+                  loading="lazy"
+                />
+                <figcaption>
+                  <strong>Avoid Falling Objects</strong>
+                  Players move through falling hazards, collect diamond bonuses, and monitor their
+                  score, level, and survival duration in real time.
+                </figcaption>
+              </figure>
+              <figure className="case-study-image">
+                <img
+                  src="/images/RevoFun/Memory-card.png"
+                  alt="RevoFun Memory Card Game with revealed cards, move count, and timer"
+                  loading="lazy"
+                />
+                <figcaption>
+                  <strong>Memory Card Game</strong>
+                  Players reveal cards, remember their positions, and match every pair while the
+                  interface tracks moves and elapsed time.
+                </figcaption>
+              </figure>
             </div>
           </div>
         </section>
@@ -386,11 +428,18 @@ const RevoFunPage = () => (
               progression. Memory Card manages shuffled pairs, temporary card reveals, matching,
               moves, elapsed time, and the final win state through DOM updates.
             </p>
-            <ScreenshotPlaceholder
-              label="Diagram needed · Interaction logic"
-              title="Game state and replay lifecycle"
-              description="Create a simple flow diagram showing Setup → Active Game → Score or Win Condition → Game Over → Leaderboard → Replay. Add short branches for Battleship turns, Falling Objects collisions, and Memory Card matching."
-            />
+            <figure className="case-study-image">
+              <img
+                src="/images/RevoFun/RevoFun-game-state.png"
+                alt="RevoFun game state and replay lifecycle flow diagram"
+                loading="lazy"
+              />
+              <figcaption>
+                <strong>Game state and replay lifecycle</strong>
+                Each game moves through setup, active play, scoring or win conditions, completion,
+                leaderboard updates, and a predictable replay path.
+              </figcaption>
+            </figure>
           </div>
         </section>
 
@@ -420,16 +469,30 @@ const RevoFunPage = () => (
               claimed by the current project.
             </p>
             <div className="screenshot-stack">
-              <ScreenshotPlaceholder
-                label="Image needed · Responsive evidence"
-                title="Responsive tablet landing layout"
-                description="Use one screenshot of the RevoFun landing page at tablet width. Keep the navigation, hero, and game cards visible so the responsive layout can be evaluated from a single image."
-              />
-              <ScreenshotPlaceholder
-                label="Image needed · Persistence evidence"
-                title="Persisted leaderboard after refresh"
-                description="Use one screenshot of the leaderboard after the page has been refreshed, with a recognizable demo nickname and result still visible. Avoid exposing browser extensions or personal information."
-              />
+              <figure className="case-study-image">
+                <img
+                  src="/images/RevoFun/Responsive-tablet.png"
+                  alt="RevoFun responsive landing page displayed at tablet width"
+                  loading="lazy"
+                />
+                <figcaption>
+                  <strong>Responsive tablet landing layout</strong>
+                  The navigation, hero content, and featured games adapt into a clear tablet layout
+                  while preserving the same visual hierarchy and access paths.
+                </figcaption>
+              </figure>
+              <figure className="case-study-image">
+                <img
+                  src="/images/RevoFun/Persisted-leaderboard.png"
+                  alt="RevoFun leaderboard retaining player results after a page refresh"
+                  loading="lazy"
+                />
+                <figcaption>
+                  <strong>Persisted leaderboard after refresh</strong>
+                  Browser storage keeps player names and results available after refreshing the
+                  page, without requiring an account or backend service.
+                </figcaption>
+              </figure>
             </div>
           </div>
         </section>
@@ -452,11 +515,18 @@ const RevoFunPage = () => (
                 </article>
               ))}
             </div>
-            <ScreenshotPlaceholder
-              label="Diagram needed · Static architecture"
-              title="RevoFun browser architecture"
-              description="Create a high-level diagram showing Visitor → Static Host → HTML/CSS/Assets → Vanilla JavaScript Game Logic → DOM and localStorage. Clearly mark that gameplay and leaderboard persistence happen inside the browser and that no backend is currently used."
-            />
+            <figure className="case-study-image">
+              <img
+                src="/images/RevoFun/RevoFun-browser-architecture.png"
+                alt="RevoFun browser architecture showing static hosting, frontend assets, game logic, DOM updates, and local storage"
+                loading="lazy"
+              />
+              <figcaption>
+                <strong>RevoFun browser architecture</strong>
+                Static hosting delivers the interface and assets, while Vanilla JavaScript runs
+                gameplay, updates the DOM, and persists leaderboard data locally in the browser.
+              </figcaption>
+            </figure>
           </div>
         </section>
 

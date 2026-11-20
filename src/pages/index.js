@@ -221,7 +221,7 @@ const projects = [
   {
     title: 'RevoFun - Browser-Based Gaming Website',
     href: '/revofun/',
-    image: '/images/official/RevoFun.png',
+    image: '/images/RevoFun/RevoFun-Hero.png',
     description:
       'Live demo of RevoFun, a browser-based gaming website built with HTML5, CSS3, Tailwind CSS, and Vanilla JavaScript. Includes a responsive landing page, mobile navigation, and three mini games: Battleship War, Avoid the Falling Objects, and Memory Card Game with score tracking and local leaderboard storage.',
     skills: ['HTML5', 'CSS3', 'Tailwind CSS', 'JavaScript'],

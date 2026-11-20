@@ -21,7 +21,7 @@
     "prebuild": "npm run build:css",
     "build": "gatsby build",
     "dev": "npm run develop",
-    "develop": "npm run build:css && concurrently -k \"npm:watch:css\" \"gatsby develop --port 8001\"",
+    "develop": "npm run build:css && concurrently -k \"npm:watch:css\" \"gatsby develop --port 8000\"",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",
