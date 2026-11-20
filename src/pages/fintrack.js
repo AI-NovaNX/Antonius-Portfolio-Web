@@ -712,12 +712,22 @@ const FinTrackPage = () => (
           <div>
             <p>Explore the complete FinTrack API contract.</p>
             <div className="demo-access">
-              <p>
-                After seeding, all demo users use the password <strong>Fintrack123</strong>.
-              </p>
-              <p>
-                <strong>Admin:</strong> alya@example.com · <strong>User:</strong> bima@example.com
-              </p>
+              <p>To try the application, use one of the demo accounts below:</p>
+              <dl>
+                <div>
+                  <dt>Admin</dt>
+                  <dd>
+                    <strong>Email:</strong> alya@example.com · <strong>Password:</strong>{' '}
+                    Fintrack123
+                  </dd>
+                </div>
+                <div>
+                  <dt>User Demo</dt>
+                  <dd>
+                    <strong>Email:</strong> user@fintech.local · <strong>Password:</strong> User1234
+                  </dd>
+                </div>
+              </dl>
             </div>
           </div>
           <a
