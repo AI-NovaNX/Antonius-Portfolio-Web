@@ -115,7 +115,7 @@ const education = [
     logoClass: 'education-logo-binus',
     certificate: '/images/official/Ijazah-S2.PDF',
     description:
-      'Pursuing a Master of Information System Management degree, focusing on advanced topics in information systems, project management, and technology strategy.',
+      'Graduated with a Master of Information System Management degree, focusing on advanced topics in information systems, project management, and technology strategy.',
     skills: [
       'Information Systems',
       'Project Management',
@@ -161,7 +161,7 @@ const education = [
 const experience = [
   {
     period: '1995 - 2024',
-    role: 'QA/QC Manager',
+    role: 'Quality Assurance Manager',
     company: 'PT WIKA Gedung',
     href: 'https://www.wikagedung.co.id/',
     certificate: '/images/official/Sertifikat-Mutu-WIKA.pdf',
@@ -207,8 +207,8 @@ const projects = [
     href: '/revoshop/',
     image: '/images/official/Revoshop.png',
     description:
-      'RevoShop is a modern e-commerce web application built with Next.js, React, TypeScript, Tailwind CSS, and mockup data. It showcases product catalog, category filtering, product detail, promotional deals, shopping cart flow, login UI, and admin section.',
-    skills: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS'],
+      'RevoShop is a modern e-commerce web application built primarily with Next.js, React, JavaScript, Tailwind CSS, and mock data. It showcases product catalog, category filtering, product detail, promotional deals, shopping cart flow, login UI, and admin section.',
+    skills: ['Next.js', 'React', 'JavaScript', 'Tailwind CSS'],
   },
   {
     title: 'FinTrack API Documentation - Swagger',
@@ -271,6 +271,46 @@ const SocialIcon = ({ type }) => {
 };
 SocialIcon.propTypes = {
   type: PropTypes.oneOf(['github', 'linkedin']).isRequired,
+};
+
+const ContactIcon = ({ type }) => {
+  const paths = {
+    email: (
+      <>
+        <rect x="3" y="5" width="18" height="14" rx="2" />
+        <path d="m3 7 9 6 9-6" />
+      </>
+    ),
+    location: (
+      <>
+        <path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z" />
+        <circle cx="12" cy="10" r="2.5" />
+      </>
+    ),
+    availability: (
+      <>
+        <circle cx="12" cy="12" r="9" />
+        <path d="m8 12 2.5 2.5L16 9" />
+      </>
+    ),
+  };
+
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      className="contact-detail-icon"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round">
+      {paths[type]}
+    </svg>
+  );
+};
+ContactIcon.propTypes = {
+  type: PropTypes.oneOf(['email', 'location', 'availability']).isRequired,
 };
 
 const SectionHeading = ({ children }) => <h2 className="section-heading">{children}</h2>;
@@ -441,9 +481,9 @@ const PortfolioHome = () => {
               <h1>
                 <a href="/">Antonius Eko Indriarto</a>
               </h1>
-              <h2>Frontend Engineer</h2>
+              <h2>Fullstack Developer</h2>
               <p className="intro-tagline">
-                Frontend Developer building reliable web experiences with React, Next.js, and
+                Fullstack Developer building reliable web experiences with React, Next.js, and
                 TypeScript.
               </p>
               <nav className="section-nav" aria-label="In-page jump links">
@@ -527,8 +567,8 @@ const PortfolioHome = () => {
                   maintainable software. Combining hands-on frontend development with 25 years of
                   quality-focused experience, I bring a disciplined, detail-oriented approach to
                   building reliable user interfaces. I bring systematic problem-solving, strong
-                  ownership, and a commitment to continuous learning to my work as a Frontend
-                  Engineer.
+                  ownership, and a commitment to continuous learning to my work as a Fullstack
+                  Developer.
                 </p>
               </div>
             </section>
@@ -694,36 +734,38 @@ const PortfolioHome = () => {
               </ul>
             </section>
 
-            <section
-              id="writing"
-              className="content-section writing-section"
-              aria-label="Blog posts">
-              <SectionHeading>Writing</SectionHeading>
-              <ul className="project-list">
-                {writing.map(article => (
-                  <Card as="li" className="project-card writing-card" key={article.year}>
-                    <a
-                      className="project-image"
-                      href={article.href}
-                      target="_blank"
-                      rel="noreferrer"
-                      tabIndex={-1}
-                      aria-hidden="true">
-                      <img src={article.image} alt={article.alt} loading="lazy" />
-                    </a>
-                    <CardContent className="card-copy">
-                      <CardDescription className="writing-year">{article.year}</CardDescription>
-                      <CardTitle className="card-heading">
-                        <a href={article.href} target="_blank" rel="noreferrer">
-                          {article.title}
-                          <ExternalArrow />
-                        </a>
-                      </CardTitle>
-                    </CardContent>
-                  </Card>
-                ))}
-              </ul>
-            </section>
+            {writing.length > 0 && (
+              <section
+                id="writing"
+                className="content-section writing-section"
+                aria-label="Blog posts">
+                <SectionHeading>Writing</SectionHeading>
+                <ul className="project-list">
+                  {writing.map(article => (
+                    <Card as="li" className="project-card writing-card" key={article.year}>
+                      <a
+                        className="project-image"
+                        href={article.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        tabIndex={-1}
+                        aria-hidden="true">
+                        <img src={article.image} alt={article.alt} loading="lazy" />
+                      </a>
+                      <CardContent className="card-copy">
+                        <CardDescription className="writing-year">{article.year}</CardDescription>
+                        <CardTitle className="card-heading">
+                          <a href={article.href} target="_blank" rel="noreferrer">
+                            {article.title}
+                            <ExternalArrow />
+                          </a>
+                        </CardTitle>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </ul>
+              </section>
+            )}
 
             <section
               id="contact"
@@ -734,6 +776,29 @@ const PortfolioHome = () => {
                 I'm always interested in hearing about new projects and opportunities. Whether you
                 have a question or just want to say hi, feel free to reach out!
               </p>
+              <ul className="contact-details" aria-label="Contact details">
+                <li>
+                  <ContactIcon type="email" />
+                  <span>
+                    <strong>Email</strong>
+                    <a href="mailto:antagita70@gmail.com">antagita70@gmail.com</a>
+                  </span>
+                </li>
+                <li>
+                  <ContactIcon type="location" />
+                  <span>
+                    <strong>Location</strong>
+                    Indonesia
+                  </span>
+                </li>
+                <li>
+                  <ContactIcon type="availability" />
+                  <span>
+                    <strong>Availability</strong>
+                    Open to remote opportunities
+                  </span>
+                </li>
+              </ul>
               <ContactForm />
             </section>
           </main>
@@ -960,7 +1025,7 @@ export const Head = () => (
     <title>Antonius | Portfolio</title>
     <meta
       name="description"
-      content="Portfolio of Antonius Eko Indriarto, a frontend engineer building reliable web experiences with React, Next.js, and TypeScript."
+      content="Portfolio of Antonius Eko Indriarto, a fullstack developer building reliable frontend and backend web experiences."
     />
   </>
 );

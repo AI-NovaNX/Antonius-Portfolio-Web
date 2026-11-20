@@ -166,10 +166,9 @@ const RevoFunPage = () => (
           <Link className="nexread-owner" to="/">
             Antonius Eko Indriarto
           </Link>
-          <p className="nexread-role">Frontend Engineer</p>
+          <p className="nexread-role">Fullstack Developer</p>
           <p className="nexread-intro">
-            Frontend Developer building reliable web experiences with React, Next.js, and
-            TypeScript.
+            Fullstack Developer building reliable experiences across frontend and backend systems.
           </p>
           <nav className="nexread-nav" aria-label="RevoFun article sections">
             <a href="#overview">
@@ -548,7 +547,7 @@ const RevoFunPage = () => (
               Working close to the DOM made state transitions, event lifecycles, rendering cost, and
               responsive constraints concrete rather than hidden behind abstractions.
             </p>
-            <h3 className="subsection-heading">Results and future improvements</h3>
+            <h3 className="subsection-heading">Results, Output &amp; Future Improvements</h3>
             <p>
               The result is a deployed, no-install destination with three playable experiences, a
               consistent responsive brand, and persistent local scores. Future iterations could add

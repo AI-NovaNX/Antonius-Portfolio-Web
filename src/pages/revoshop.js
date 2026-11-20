@@ -186,10 +186,9 @@ const RevoShopPage = () => (
           <Link className="nexread-owner" to="/">
             Antonius Eko Indriarto
           </Link>
-          <p className="nexread-role">Frontend Engineer</p>
+          <p className="nexread-role">Fullstack Developer</p>
           <p className="nexread-intro">
-            Frontend Developer building reliable web experiences with React, Next.js, and
-            TypeScript.
+            Fullstack Developer building reliable experiences across frontend and backend systems.
           </p>
           <nav className="nexread-nav" aria-label="RevoShop article sections">
             <a href="#overview">
@@ -244,7 +243,7 @@ const RevoShopPage = () => (
             <span className="revoshop-header-logo" aria-hidden="true">
               <img src="/images/Revoshop/RevoshopLogo1.webp" alt="" />
             </span>
-            <h1> - RevoShop</h1>
+            <h1> RevoShop</h1>
           </div>
           <p className="article-lead">
             A resilient storefront designed around complete shopping journeys.
@@ -262,7 +261,7 @@ const RevoShopPage = () => (
             </a>
             <a
               className="secondary-action"
-              href="https://github.com/Revou-FSSE-Feb26/milestone-3-AI-NovaNX"
+              href="https://github.com/AI-NovaNX/milestone-3-AI-NovaNX"
               target="_blank"
               rel="noreferrer">
               View Source Code ↗
@@ -739,6 +738,22 @@ const RevoShopPage = () => (
               Component is not automatically a purely client-rendered page: static shells can still
               be built in advance and hydrated for interaction, while dynamic Route Handlers serve
               JSON and the proxy protects access-sensitive journeys.
+            </p>
+            <h3 className="subsection-heading">Results &amp; Output</h3>
+            <p>
+              The completed output is a responsive e-commerce application deployed on Vercel. It
+              delivers a connected customer journey from catalog search and product evaluation to
+              persistent cart management, voucher application, authenticated checkout, and order
+              confirmation, alongside a role-protected product management dashboard for
+              administrators.
+            </p>
+            <p>
+              The application also provides production-oriented resilience around its shared
+              external API: obsolete requests can be cancelled, eligible read failures use bounded
+              retries, mock data provides a controlled fallback, and loading, empty, validation,
+              error, and success states keep system behavior visible. Together, these outputs turn
+              the framework milestone into a complete, reviewable shopping experience rather than a
+              collection of disconnected pages.
             </p>
             <div className="problem-callout closing-statement">
               <p className="problem-label">Closing perspective</p>

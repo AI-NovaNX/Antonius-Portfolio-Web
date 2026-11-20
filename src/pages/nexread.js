@@ -326,10 +326,9 @@ const NexReadPage = () => (
           <Link className="nexread-owner" to="/">
             Antonius Eko Indriarto
           </Link>
-          <p className="nexread-role">Frontend Engineer</p>
+          <p className="nexread-role">Fullstack Developer</p>
           <p className="nexread-intro">
-            Frontend Developer building reliable web experiences with React, Next.js, and
-            TypeScript.
+            Fullstack Developer building reliable experiences across frontend and backend systems.
           </p>
           <nav className="nexread-nav" aria-label="NexRead article sections">
             <a href="#overview">
@@ -1109,6 +1108,22 @@ const NexReadPage = () => (
               data relationships, and well-defined workflows all contribute to software that users
               can trust.
             </p>
+            <h3 className="subsection-heading">Results &amp; Output</h3>
+            <p>
+              The completed output is a deployed full-stack library platform that connects a
+              responsive reader experience with protected administrator operations. Readers can
+              discover and filter books, review availability, manage borrowing selections, submit
+              requests, and track loan status. Administrators can manage catalog and user data,
+              monitor loans, and verify physical returns through role-protected workflows.
+            </p>
+            <p>
+              The implementation is supported by documented API contracts, 92 passing unit tests
+              across 20 test suites, a 75% minimum CI coverage threshold for each measured metric,
+              and controlled frontend and backend deployment workflows through Vercel and Railway.
+              These outputs demonstrate a working product and repeatable delivery process without
+              claiming user-impact metrics that have not yet been formally measured.
+            </p>
+            <h3 className="subsection-heading">Future improvements</h3>
             <p>
               A logical next step is moving favorites from browser-local storage to the backend so
               they can follow readers across devices while preserving the same user experience.

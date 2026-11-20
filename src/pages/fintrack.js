@@ -186,10 +186,9 @@ const FinTrackPage = () => (
           <Link className="nexread-owner" to="/">
             Antonius Eko Indriarto
           </Link>
-          <p className="nexread-role">Frontend Engineer</p>
+          <p className="nexread-role">Fullstack Developer</p>
           <p className="nexread-intro">
-            Frontend Developer building reliable web experiences with React, Next.js, and
-            TypeScript.
+            Fullstack Developer building reliable experiences across frontend and backend systems.
           </p>
           <nav className="nexread-nav" aria-label="FinTrack article sections">
             <a href="#overview">
@@ -592,6 +591,21 @@ const FinTrackPage = () => (
               balance provider made transaction behavior easier to test and explain, while
               regression collections turned documentation into repeatable evidence rather than a
               static list of endpoints.
+            </p>
+            <h3 className="subsection-heading">Results &amp; Output</h3>
+            <p>
+              The completed output is a deployed personal-finance API with JWT authentication,
+              role-based access, ownership-isolated accounts and transactions, controlled category
+              management, and balance-safe income, expense, and transfer workflows. Its Swagger
+              interface exposes the API contract for review, while Railway provides a live
+              environment for exercising the documented behavior.
+            </p>
+            <p>
+              The latest Newman regression run completed 73 requests and 89 assertions with zero
+              reported failures. Unit, end-to-end, and API workflow coverage provide repeatable
+              evidence for authentication, authorization, validation, balance changes and reversals,
+              database constraints, and cleanup—making the result verifiable beyond the endpoint
+              documentation alone.
             </p>
             <h3 className="subsection-heading">Future improvements</h3>
             <p>

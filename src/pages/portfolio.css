@@ -58,6 +58,12 @@ body * {
   background: #0f172a;
 }
 
+.portfolio-page p {
+  hyphens: auto;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
 .portfolio-page a {
   color: inherit;
   text-decoration: none;
@@ -967,6 +973,53 @@ html:not([data-theme='light']) .project-card:focus-within {
   max-width: 540px;
 }
 
+.contact-details {
+  display: grid;
+  gap: 12px;
+  list-style: none;
+  margin: 24px 0 32px;
+  padding: 0;
+}
+
+.contact-details li {
+  align-items: center;
+  color: #94a3b8;
+  display: flex;
+  font-size: 14px;
+  gap: 12px;
+  line-height: 1.5;
+}
+
+.contact-details li > span {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-details strong {
+  color: #e2e8f0;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.contact-details a {
+  color: inherit;
+  transition: color 160ms ease;
+}
+
+.contact-details a:hover,
+.contact-details a:focus-visible {
+  color: #5eead4;
+}
+
+.contact-detail-icon {
+  color: #5eead4;
+  flex: 0 0 auto;
+  height: 22px;
+  width: 22px;
+}
+
 .contact-form {
   display: flex;
   flex-direction: column;
@@ -1337,6 +1390,14 @@ html[data-theme='light'] .contact-form textarea {
 html[data-theme='light'] .contact-section > .prose,
 html[data-theme='light'] .contact-form .form-group label {
   color: #000;
+}
+
+html[data-theme='light'] .contact-details li {
+  color: #475569;
+}
+
+html[data-theme='light'] .contact-details strong {
+  color: #0f172a;
 }
 
 html[data-theme='light'] .contact-form input::placeholder,
