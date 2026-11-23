@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
+import BackToTopButton from '../components/back-to-top-button';
 import './portfolio.css';
 import './nexread.css';
 
@@ -229,9 +230,12 @@ const FinTrackPage = () => (
             </a>
           </nav>
         </div>
-        <Link className="back-link" to="/#projects">
-          ← Back to projects
-        </Link>
+        <div className="sidebar-actions">
+          <Link className="back-link" to="/#projects">
+            ← Back to projects
+          </Link>
+          <BackToTopButton />
+        </div>
       </aside>
 
       <main className="nexread-article">

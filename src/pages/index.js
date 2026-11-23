@@ -1003,6 +1003,9 @@ const ContactForm = () => {
       <button type="submit" className="contact-submit" disabled={isLoading}>
         {isLoading ? 'Sending...' : 'Send Message'}
       </button>
+      <a className="home-link" href="#about">
+        ↑ Home
+      </a>
       {statusMessage && (
         <p
           className={`form-message ${

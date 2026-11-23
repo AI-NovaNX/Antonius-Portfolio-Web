@@ -45,6 +45,27 @@
   color: #5eead4 !important;
   transform: translateX(-3px);
 }
+.sidebar-actions {
+  align-items: center;
+  display: block;
+  margin-top: 28px;
+  min-height: 36px;
+  padding-right: 178px;
+  position: relative;
+  width: 100%;
+}
+.sidebar-actions .back-link {
+  line-height: 36px;
+  margin-top: 0;
+  white-space: nowrap;
+}
+.sidebar-actions .back-to-top-button {
+  margin: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  white-space: nowrap;
+}
 .nexread-article {
   margin-top: 64px;
   min-width: 0;
@@ -803,6 +824,39 @@
   color: inherit;
   font-size: inherit;
   font-weight: 400;
+}
+.back-to-top-button {
+  align-self: flex-start;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  color: #cbd5e1;
+  flex: 0 0 auto;
+  font-size: 14px;
+  font-weight: 600;
+  gap: 5px;
+  height: 36px;
+  padding: 0;
+  transition: color 160ms ease, transform 160ms ease;
+  width: auto;
+}
+.back-to-top-button:hover {
+  background: transparent;
+  color: #5eead4;
+  transform: translateX(-3px);
+}
+.back-to-top-button:focus-visible {
+  outline: 2px solid #5eead4;
+  outline-offset: 4px;
+}
+.back-to-top-button svg {
+  height: 16px;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+  width: 16px;
 }
 .demo-access dl {
   display: grid;

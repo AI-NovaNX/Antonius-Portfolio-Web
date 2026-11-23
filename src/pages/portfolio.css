@@ -1092,6 +1092,20 @@ html:not([data-theme='light']) .project-card:focus-within {
   transform: translate(0, 0);
 }
 
+.home-link {
+  color: #cbd5e1 !important;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 600;
+  transition: color 160ms ease, transform 160ms ease;
+  width: fit-content;
+}
+
+.home-link:hover {
+  color: #5eead4 !important;
+  transform: translateX(-3px);
+}
+
 .form-message {
   color: #64748b;
   font-size: 14px;
